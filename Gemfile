@@ -37,7 +37,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Manually added gems
 gem 'faker',                   '1.7.3'
 gem 'will_paginate',           '3.1.6'
-
+gem 'devise',                  '4.6.2'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
