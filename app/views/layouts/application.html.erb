@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SideProjectSummerRails</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%= yield(:title) %> | #sideprojectsummer</title>
+    <link rel="icon" href="https://www.sideprojectsummer.com/favicon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +13,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="row">
+      <div class="column">
+        <%= yield %>
+      </div>
+      <div class="column">
+        <h2>
+          <span>May–Aug</span><br>
+          2019
+        </h2>
+      </div>
+      <div class="column">
+        <h1>Make 2019 the summer you learn to code. </h1>
+      </div>
+    </div>
+    <div class="footer">
+      <p>#sideprojectsummer is a <a href="https://consonance.app/">General Products Ltd</a> side project </p>
+    </div>
   </body>
 </html>

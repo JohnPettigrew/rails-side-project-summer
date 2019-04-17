@@ -1,3 +1,88 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: "Hind Guntur", Helvetica, Arial, sans-serif;
+  background-image: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: #fefaf1;
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.row {
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+}
+
+.column {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 10px;
+}
+
+.footer {
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 220px;
+}
+
+h2 {
+  font-size: 75px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 3px;
+}
+
+h3 {
+  padding: 25px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+span {
+  letter-spacing: 0;
+  font-size: 50%;
+}
+
+a {
+  color: #001af8;
+}
+
+img {
+  width: 100px;
+}
+
+
+@media (max-width: 1100px) {
+  body {
+    padding-top: 0;
+    background-size: cover;
+  }
+
+  .row {
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+
+  h1 {
+    margin-top: 0px;
+  }
+
+  h2 {
+    padding: 0;
+  }
+
+}
