@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker',                   '1.7.3'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
-gem 'bootstrap-sass',          '3.3.7'
+gem 'bootstrap',               '~> 4.3.1'
 
 
 group :development, :test do
