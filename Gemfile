@@ -37,8 +37,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Manually added gems
 gem 'faker',                   '1.7.3'
 gem 'will_paginate',           '3.1.6'
-gem 'bootstrap-will_paginate', '1.0.0'
-gem 'bootstrap',               '~> 4.3.1'
 
 
 group :development, :test do
@@ -65,6 +63,7 @@ group :test do
   # gem 'chromedriver-helper'
 
   # Manually added gems
+  gem 'rails-controller-testing', '1.0.2'
   gem 'minitest',                 '5.11.3'
   gem 'minitest-reporters',       '1.1.14'
   gem 'guard',                    '2.14.1'

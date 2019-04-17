@@ -10,9 +10,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <div class="row">
       <div class="column">
         <%= yield %>
@@ -27,8 +29,6 @@
         <h1>Make 2019 the summer you learn to code. </h1>
       </div>
     </div>
-    <div class="footer">
-      <p>#sideprojectsummer is a <a href="https://consonance.app/">General Products Ltd</a> side project </p>
-    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
