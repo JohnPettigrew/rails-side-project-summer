@@ -1,24 +1,3 @@
-# README
+# \#SideProjectSummer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is intended to produce a basic site that can support the \#SideProjectSummer project by [Emma Barnes](https://twitter.com/has_many_books). For an outline of the possible features, see the [Project-outline.md](Project-outline.md) file
