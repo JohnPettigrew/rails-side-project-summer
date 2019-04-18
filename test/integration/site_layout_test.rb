@@ -1,23 +1,46 @@
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
 
   def setup
     @base_title = "#sideprojectsummer"
   end
 
-  test "Header content on home page" do
+  test "Header content on home page when logged out" do
     get root_path
     assert_response :success
     assert_template 'static_pages/home'
     assert_select "title", "#{@base_title}"
     assert_select "header"
     assert_select "header>a[href=?]", root_path, count: 1
-    assert_select "nav>ul>li>a[href=?]", root_path, count: 1
-    assert_select "nav>ul>li>a[href=?]", about_path, count: 1
     assert_select "li", text: "Home"
+    assert_select "nav>ul>li>a[href=?]", root_path, count: 1
     assert_select "li", text: "About #SideProjectSummer"
+    assert_select "nav>ul>li>a[href=?]", about_path, count: 1
+    assert_select "li", text: "Log in"
+    assert_select "nav>ul>li>a[href=?]", new_user_session_path, count: 1
+    assert_select "li", text: "Sign up"
+    assert_select "nav>ul>li>a[href=?]", new_user_registration_path, count: 1
   end
+
+# This test isn't working - user seems not to be logged in at all!
+#   test "Header content on home page when logged in" do
+#     get root_path
+#     sign_in users(:one)
+#     assert_response :success
+#     assert_select "p.alert-success", count: 1
+#     assert_select "p.alert-danger", count: 0
+#     assert_template 'static_pages/home'
+#     assert_select "title", "#{@base_title}"
+#     assert_select "header"
+#     assert_select "header>a[href=?]", root_path, count: 1
+#     assert_select "nav>ul>li>a[href=?]", root_path, count: 1
+#     assert_select "li", text: "About #SideProjectSummer"
+#     assert_select "nav>ul>li>a[href=?]", about_path, count: 1
+#     assert_select "li", text: "Log out"
+#     assert_select "nav>ul>li>a[href=?]", destroy_user_session_path, count: 1
+#   end
 
   test "Footer content" do
     get root_path
