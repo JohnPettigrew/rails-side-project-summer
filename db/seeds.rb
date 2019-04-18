@@ -13,3 +13,11 @@ User.create!(email: "john@wearefutureproofs.com", password:              "123456
   password = "password1"
   User.create!(email: email, password: password, password_confirmation: password)
 end
+
+Project.create!(name: Faker::App.name, description: Faker::Lorem.sentence(5), source: "http://github.com", user_id: 1, created_at: 2.weeks.ago)
+
+Project.create!(name: Faker::App.name, description: Faker::Lorem.sentence(5), source: "http://github.com", user_id: 1)
+
+Project.create!(name: Faker::App.name, description: Faker::Lorem.sentence(5), source: "http://github.com", user_id: 2)
+
+Project.create!(name: Faker::App.name, description: Faker::Lorem.sentence(5), source: "http://github.com", user_id: 3)

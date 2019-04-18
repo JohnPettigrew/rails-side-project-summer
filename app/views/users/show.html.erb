@@ -1,6 +1,13 @@
 <% provide(:title, 'User profile') %>
-<h1>User profile</h1>
-
-<ul>
+<h3>
   <%= render @user %>
-</ul>
+</h3>
+
+<div>
+  <% if @user.projects.any? %>
+    <h3>Projects (<%= @user.projects.count %>)</h3>
+    <ol class="projects">
+      <%= render @projects %>
+    </ol>
+  <% end %>
+</div>

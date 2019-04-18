@@ -1,0 +1,27 @@
+orange:
+  name: Faker::App.name
+  description: Faker::Lorem.sentence(5)
+  source: "http://github.com"
+  user: one
+  created_at: <%= 20.days.ago %>
+
+blue:
+  name: Faker::App.name
+  description: Faker::Lorem.sentence(5)
+  source: "http://github.com"
+  user: one
+  created_at: <%= 10.minutes.ago %>
+
+sausage:
+  name: Faker::App.name
+  description: Faker::Lorem.sentence(5)
+  source: "http://github.com"
+  user: two
+  created_at: <%= 3.years.ago %>
+
+most_recent:
+  name: Faker::App.name
+  description: Faker::Lorem.sentence(5)
+  source: "http://github.com"
+  user: one
+  created_at: <%= Time.zone.now %>
