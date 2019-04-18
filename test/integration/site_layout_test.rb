@@ -12,23 +12,25 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'static_pages/home'
     assert_select "title", "#{@base_title}"
-    assert_select "header"
     assert_select "header>a[href=?]", root_path, count: 1
-    assert_select "li", text: "Home"
-    assert_select "nav>ul>li>a[href=?]", root_path, count: 1
-    assert_select "li", text: "About #SideProjectSummer"
-    assert_select "nav>ul>li>a[href=?]", about_path, count: 1
-    assert_select "li", text: "Log in"
-    assert_select "nav>ul>li>a[href=?]", new_user_session_path, count: 1
-    assert_select "li", text: "Sign up"
-    assert_select "nav>ul>li>a[href=?]", new_user_registration_path, count: 1
+    assert_select "header" do
+      assert_select "li", text: "Home"
+      assert_select "nav>ul>li>a[href=?]", root_path, count: 1
+      assert_select "li", text: "About #SideProjectSummer"
+      assert_select "nav>ul>li>a[href=?]", about_path, count: 1
+      assert_select "li", text: "Log in"
+      assert_select "nav>ul>li>a[href=?]", new_user_session_path, count: 1
+      assert_select "li", text: "Sign up"
+      assert_select "nav>ul>li>a[href=?]", new_user_registration_path, count: 1
+    end
   end
 
 # This test isn't working - the commented-out portions should appear (and do in the browser) but don't in the test. Something odd is happening!
   test "Header on home page when logged in" do
-    get root_path
+    get new_user_session_path
+    assert_template 'devise/sessions/new'
     @user=users(:one)
-    sign_in (:one)
+    post new_user_session_path(email: @user.email, password: 'password123')
     assert_response :success
 #     assert_select "p.alert-success", count: 1
 #     assert_select "p.alert-danger", count: 0
@@ -36,18 +38,19 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 #     assert_select "title", "#{@base_title}"
 #     get users_path
 #     assert_template 'layouts/users/index'
-#     assert_select "header"
 #     assert_select "header>a[href=?]", root_path, count: 1
-#     assert_select "li", text: "Home"
-#     assert_select "nav>ul>li>a[href=?]", root_path, count: 1
-#     assert_select "li", text: "About #SideProjectSummer"
-#     assert_select "nav>ul>li>a[href=?]", about_path, count: 1
-#     assert_select "li", text: "Users"
-#     assert_select "nav>ul>li>a[href=?]", users_path, count: 1
-#     assert_select "li", text: "Profile"
-#     assert_select "nav>ul>li>a[href=?]", user_path, count: 1
-#     assert_select "li", text: "Log out"
-#     assert_select "nav>ul>li>a[href=?]", destroy_user_session_path, count: 1
+#     assert_select "header" do
+#       assert_select "li", text: "Home"
+#       assert_select "nav>ul>li>a[href=?]", root_path, count: 1
+#       assert_select "li", text: "About #SideProjectSummer"
+#       assert_select "nav>ul>li>a[href=?]", about_path, count: 1
+#       assert_select "li", text: "Users"
+#       assert_select "nav>ul>li>a[href=?]", users_path, count: 1
+#       assert_select "li", text: "Profile"
+#       assert_select "nav>ul>li>a[href=?]", user_path, count: 1
+#       assert_select "li", text: "Log out"
+#       assert_select "nav>ul>li>a[href=?]", destroy_user_session_path, count: 1
+#     end
   end
 
   test "Footer content" do
@@ -69,5 +72,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'static_pages/about'
     assert_select "title", "About | #{@base_title}"
+  end
+
+  test "Redirect from users_path when logged out" do
+    get users_path
+    assert_redirected_to new_user_session_path
   end
 end
