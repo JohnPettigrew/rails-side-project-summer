@@ -32,14 +32,16 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_response :success
 #     assert_select "p.alert-success", count: 1
 #     assert_select "p.alert-danger", count: 0
-    assert_template 'static_pages/home'
-    assert_select "title", "#{@base_title}"
-    assert_select "header"
-    assert_select "header>a[href=?]", root_path, count: 1
-    assert_select "li", text: "Home"
-    assert_select "nav>ul>li>a[href=?]", root_path, count: 1
-    assert_select "li", text: "About #SideProjectSummer"
-    assert_select "nav>ul>li>a[href=?]", about_path, count: 1
+#     assert_template 'static_pages/home'
+#     assert_select "title", "#{@base_title}"
+    get users_path
+    assert_template 'layouts/users/index'
+#     assert_select "header"
+#     assert_select "header>a[href=?]", root_path, count: 1
+#     assert_select "li", text: "Home"
+#     assert_select "nav>ul>li>a[href=?]", root_path, count: 1
+#     assert_select "li", text: "About #SideProjectSummer"
+#     assert_select "nav>ul>li>a[href=?]", about_path, count: 1
 #     assert_select "li", text: "Users"
 #     assert_select "nav>ul>li>a[href=?]", users_path, count: 1
 #     assert_select "li", text: "Profile"

@@ -11,7 +11,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 #   test "Users index page logged in" do
 #     get users_path
 #     assert_response :success
-#     assert_template 'users/index'
+#     assert_template 'layouts/users/index'
 #     assert_select "a[href=?]", user_path, count: 1
 #   end
 end
