@@ -7,7 +7,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @base_title = "#sideprojectsummer"
   end
 
-  test "Header content on home page when logged out" do
+  test "Header on home page when logged out" do
     get root_path
     assert_response :success
     assert_template 'static_pages/home'
@@ -25,9 +25,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   end
 
 # This test isn't working - user seems not to be logged in at all!
-#   test "Header content on home page when logged in" do
+#   test "Header on home page when logged in" do
 #     get root_path
-#     sign_in users(:one)
+#     @user=users(:one)
+#     sign_in (:one)
 #     assert_response :success
 #     assert_select "p.alert-success", count: 1
 #     assert_select "p.alert-danger", count: 0
