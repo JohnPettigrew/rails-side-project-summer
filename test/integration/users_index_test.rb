@@ -7,7 +7,8 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
-#   test "Users index page logged in" do #currently doesn't log in, so will fail until that works in tests
+#   Currently can't log in, so not worth working on until that process works in tests
+#   test "Users index page logged in" do
 #     get users_path
 #     assert_response :success
 #     assert_template 'users/index'
