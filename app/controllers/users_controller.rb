@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @projects = @user.projects.paginate(page: params[:page])
   end
 
+  def new
+    @user.projects.build
+  end
+
   def index
     @users = User.all.paginate(page: params[:page], per_page: 10)
   end

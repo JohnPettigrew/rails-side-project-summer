@@ -1,12 +1,12 @@
 <%= form_for (@project) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div><%= f.label :name %>
+  <%= f.text_field :name %></div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <div><%= f.label :description %>
+  <%= f.text_area :description, :rows => 3 %></div>
 
-  <%= f.label :source %>
-  <%= f.url_field :source %>
+  <div><%= f.label :source %>
+  <%= f.url_field :source %></div>
 
-  <%= f.submit "Create my project" %>
+  <div><%= f.submit "Create my project" %></div>
 <% end %>

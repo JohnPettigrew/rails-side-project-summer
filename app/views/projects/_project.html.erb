@@ -3,8 +3,9 @@
   <div><%= link_to project.user.email, project.user %></div>
   <div><%= project.description %></div>
   <div><a href="<%= project.source %>">Source</a></div>
+  <br>
   <div>
     Listed <%= time_ago_in_words(project.created_at) %> ago.
   </div>
-  <br>
+  <br><br>
 </li>

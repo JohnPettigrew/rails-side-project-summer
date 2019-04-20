@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      flash[:success] = "Project created!"
+      flash[:notice] = "Project created!"
       redirect_to user_path(current_user)
     else
       @feed_items = []

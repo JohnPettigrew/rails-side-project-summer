@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <%= f.fields_for :projects do |p|  %>
+  <%= f.fields_for :projects, Project.new do |p|  %>
     Project name: <%= p.text_field :name %>
     Project description: <%= p.text_area :description, :rows => 3 %>
     Source code location: <%= p.text_field :source %>
