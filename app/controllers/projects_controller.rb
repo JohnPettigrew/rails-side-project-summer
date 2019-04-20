@@ -2,6 +2,10 @@ class ProjectsController < ApplicationController
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
   def new
     @project = current_user.projects.new
   end
@@ -24,7 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    redirect_to root_url
+    @projects = Project.all.paginate(page: params[:page], per_page: 20)
   end
 
   private

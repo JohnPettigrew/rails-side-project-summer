@@ -1,5 +1,11 @@
 <li id="project-<%= project.id %>">
-  <div><strong><%= project.name %></strong></div>
+  <div>
+    <strong><% if current_page?(action:'show') %>
+      <%= project.name %>
+    <% else %>
+      <%= link_to project.name, project_path(project.id) %>
+    <% end %></strong>
+  </div>
   <div><%= link_to project.user.email, project.user %></div>
   <div><%= project.description %></div>
   <div><a href="<%= project.source %>">Source</a></div>
