@@ -5,7 +5,12 @@
 
 <ul class="users">
   <% @users.each do |user| %>
-    <%= render user %>
+    <li>
+      <%= link_to user do %>
+        <div><%= gravatar_for user, size: 100 %></div>
+        <div><%= user.name||="Private" %></div>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 

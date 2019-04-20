@@ -6,7 +6,9 @@
       <%= project.name %>
     <% end %></strong>
   </div>
-  <div><%= link_to project.user.name||="Private", project.user %></div>
+  <% if current_page?(controller:'projects') %>
+    <div><%= link_to project.user.name||="User "+project.user.id.to_s, project.user %></div>
+  <% end %>
   <div><%= project.description %></div>
   <% unless project.source == "" %>
     <div><a href="<%= project.source %>">Source</a></div>

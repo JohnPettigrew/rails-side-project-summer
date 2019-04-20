@@ -1,6 +1,10 @@
 <% provide(:title, 'User profile') %>
 <h3>
-  <%= render @user %>
+  <li>
+    <div><%= gravatar_for @user, size: 100 %></div>
+    <div><%= @user.name||="User "+@user.id.to_s %></div>
+    <div><%= link_to "Contact", @user.email if @user.email%></div>
+  </li>
 </h3>
 
 <div>
