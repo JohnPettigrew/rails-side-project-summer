@@ -2,11 +2,15 @@ class ProjectsController < ApplicationController
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
+  def new
+    @project = current_user.projects.new
+  end
+
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      flash[:success] = "Project created!"
-      redirect_to root_url
+      flash[:notice] = "Project created!"
+      redirect_to user_path(current_user)
     else
       @feed_items = []
       render 'static_pages/home'
@@ -15,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    flash[:success] = "Project deleted"
+    flash[:notice] = "Project deleted"
     redirect_back(fallback_location: root_url)
   end
 

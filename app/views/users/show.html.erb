@@ -8,6 +8,7 @@
     <h3>Projects (<%= @user.projects.count %>)</h3>
     <ol class="projects">
       <%= render @projects %>
+      <p><%= link_to "List a new project", new_project_path %>
     </ol>
   <% end %>
 </div>
