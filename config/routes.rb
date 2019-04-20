@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   get '/about', to: 'static_pages#about'
   resources :users
+  resources :projects
 end
