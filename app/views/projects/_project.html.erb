@@ -1,8 +1,10 @@
 <li id="project-<%= project.id %>">
-  <div class="name"><%= project.name %></div>
-  <div class="user"><%= link_to project.user.email, project.user %></div>
-  <div class="description"><%= project.description %></div>
-  <div class="timestamp">
+  <div><strong><%= project.name %></strong></div>
+  <div><%= link_to project.user.email, project.user %></div>
+  <div><%= project.description %></div>
+  <div><a href="<%= project.source %>">Source</a></div>
+  <div>
     Listed <%= time_ago_in_words(project.created_at) %> ago.
   </div>
+  <br>
 </li>
