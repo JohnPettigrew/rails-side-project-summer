@@ -1,4 +1,5 @@
 <li>
-  <%= gravatar_for user, size: 100 %>
-  <%= link_to user.email, user %>
+  <div><%= gravatar_for user, size: 100 %></div>
+  <div><%= link_to user.name||="Private", user %></div>
+  <div><%= link_to "Contact", user.email if user.email%></div>
 </li>

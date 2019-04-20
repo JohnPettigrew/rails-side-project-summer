@@ -1,14 +1,16 @@
 <li id="project-<%= project.id %>">
   <div>
-    <strong><% if current_page?(action:'show') %>
-      <%= project.name %>
-    <% else %>
+    <strong><% if current_page?(action:'index') %>
       <%= link_to project.name, project_path(project.id) %>
+    <% else %>
+      <%= project.name %>
     <% end %></strong>
   </div>
-  <div><%= link_to project.user.email, project.user %></div>
+  <div><%= link_to project.user.name||="Private", project.user %></div>
   <div><%= project.description %></div>
-  <div><a href="<%= project.source %>">Source</a></div>
+  <% unless project.source == "" %>
+    <div><a href="<%= project.source %>">Source</a></div>
+  <% end %>
   <br>
   <div>
     Listed <%= time_ago_in_words(project.created_at) %> ago.

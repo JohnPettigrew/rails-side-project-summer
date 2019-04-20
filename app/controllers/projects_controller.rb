@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [:show, :index]
 
   def show
     @project = Project.find(params[:id])
