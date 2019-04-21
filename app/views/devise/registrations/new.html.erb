@@ -1,19 +1,19 @@
-<h2>Sign up</h2>
+<h2>Take part in #SideProjectSummer!</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <%= f.fields_for :projects, Project.new do |p|  %>
     <div>
-      <%= f.label 'Project name' %><br />
+      <%= f.label 'Name the project you will start with' %><br />
       <%= p.text_field :name %>
     </div>
     <div>
-      <%= f.label 'Project description' %><br />
+      <%= f.label 'Briefly describe your project' %><br />
       <%= p.text_area :description, :rows => 3 %>
     </div>
     <div>
-      <%= f.label 'Source code location' %><br />
+      <%= f.label 'Where will your source code be stored (e.g. GitHub/Bitbucket). Please include a complete URL to the repository, or leave this field blank. You can update this later if you need to.' %><br />
       <%= p.text_field :source %>
     </div>
   <% end %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="field">
-    <%= f.label 'Your email address' %><br />
+    <%= f.label 'Your email address' %><%= link_to ' (Check our privacy policy)', privacy_path) %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
