@@ -18,9 +18,13 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
       assert_select "nav>ul>li>a[href=?]", root_path, count: 1
       assert_select "li", text: "About #SideProjectSummer"
       assert_select "nav>ul>li>a[href=?]", about_path, count: 1
-      assert_select "li", text: "Log in"
+      assert_select "li", text: "Participants"
+      assert_select "nav>ul>li>a[href=?]", users_path, count: 1
+      assert_select "li", text: "All projects"
+      assert_select "nav>ul>li>a[href=?]", projects_path, count: 1
+      assert_select "li", text: "Sign in"
       assert_select "nav>ul>li>a[href=?]", new_user_session_path, count: 1
-      assert_select "li", text: "Sign up"
+      assert_select "li", text: "Take part!"
       assert_select "nav>ul>li>a[href=?]", new_user_registration_path, count: 1
     end
   end
@@ -31,7 +35,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template 'devise/sessions/new'
     @user=users(:one)
     post new_user_session_path(email: @user.email, password: 'password123')
-    assert_response :success
+#     assert_response :success
 #     assert_select "p.alert-success", count: 1
 #     assert_select "p.alert-danger", count: 0
 #     assert_template 'static_pages/home'
@@ -44,11 +48,13 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 #       assert_select "nav>ul>li>a[href=?]", root_path, count: 1
 #       assert_select "li", text: "About #SideProjectSummer"
 #       assert_select "nav>ul>li>a[href=?]", about_path, count: 1
-#       assert_select "li", text: "Users"
+#       assert_select "li", text: "Participants"
 #       assert_select "nav>ul>li>a[href=?]", users_path, count: 1
-#       assert_select "li", text: "Profile"
+#       assert_select "li", text: "All projects"
+#       assert_select "nav>ul>li>a[href=?]", projects_path, count: 1
+#       assert_select "li", text: "Your profile"
 #       assert_select "nav>ul>li>a[href=?]", user_path, count: 1
-#       assert_select "li", text: "Log out"
+#       assert_select "li", text: "Sign out"
 #       assert_select "nav>ul>li>a[href=?]", destroy_user_session_path, count: 1
 #     end
   end
@@ -74,8 +80,9 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "title", "About | #{@base_title}"
   end
 
-  test "Redirect from users_path when logged out" do
+  test "Show participants list when logged out" do
     get users_path
-    assert_redirected_to new_user_session_path
+    assert_response :success
+    assert_template 'users/index'
   end
 end
