@@ -5,6 +5,11 @@
     <div><%= @user.name||="User "+@user.id.to_s %></div>
     <div><%= link_to "Contact", @user.email if @user.email%></div>
   </li>
+  <div>
+    <% if current_user.id==@user.id %>
+      <%= link_to "Edit your details", edit_user_registration_path %>
+    <% end %>
+  </div>
 </h3>
 
 <div>
