@@ -1,6 +1,6 @@
 <header>
-  <%= link_to "Home", root_path, id: "logo" %>
   <nav>
+    <%= link_to "Home", root_path, id: "logo" %>
     <ul>
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About #SideProjectSummer", about_path %></li>
@@ -8,10 +8,10 @@
       <li><%= link_to "All projects", projects_path %></li>
       <% if user_signed_in? %>
         <li><%= link_to "Your profile", user_path(current_user) %></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <li class="nav-btn"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Sign in", new_user_session_path %></li>
-        <li><%= link_to "Take part!", new_user_registration_path %></li>
+        <li class="nav-btn"><%= link_to "Take part!", new_user_registration_path %></li>
       <% end %>
     </ul>
   </nav>
