@@ -1,23 +1,22 @@
 <% provide(:title, 'User profile') %>
-<h3>
-  <li>
-    <div><%= gravatar_for @user, size: 100 %></div>
-    <div><%= @user.name||="User "+@user.id.to_s %></div>
-    <div><%= link_to "Contact", @user.email if @user.email%></div>
-  </li>
-  <div>
+
+<div class="profile-head">
+  <%= gravatar_for @user, size: 100 %>
+  <div class="profile-name"><%= @user.name||="Private" %></div>
+  <div class="profile-contact"><%= mail_to @user.email, "Contact" %></div>
+  <div class="profile-edit">
     <% if current_user.id==@user.id %>
       <%= link_to "Edit your details", edit_user_registration_path %>
     <% end %>
   </div>
-</h3>
+</div>
 
 <div>
   <% if @user.projects.any? %>
-    <h3>Projects (<%= @user.projects.count %>)</h3>
-    <ol class="projects">
+    <h4><%= @user.name %> has <%= pluralize(@user.projects.count, 'project') %></h4>
+    <ol class="index">
       <%= render @projects %>
     </ol>
   <% end %>
-  <p><%= link_to "List a new project", new_project_path %>
+  <p class="new-project"><%= link_to "List a new project", new_project_path %></p>
 </div>
