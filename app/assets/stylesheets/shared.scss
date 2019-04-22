@@ -140,6 +140,11 @@ input {
     }
     a {
       font-weight:700;
+      color:black;
+      text-decoration:none;
+      &:hover {
+        text-decoration:underline;
+      }
     }
   }
   .gravatar {
@@ -151,6 +156,10 @@ input {
   .user-name {
     float:left;
     padding: 15px;
+    color:black;
+    &:hover {
+      text-decoration:underline;
+    }
   }
   .project-listed, .project-source {
     text-align:right;
