@@ -5,7 +5,13 @@
 
 <ul class="index projects">
   <% @projects.each do |project| %>
-    <%= render project %>
+    <li id="project project-<%= project.id %>">
+      <p class="project-name">Project name:
+        <%= link_to project.name, project_path(project.id) %></p>
+      <p class="project-owner"><span class="extra-space-after">Created by: </span><%= link_to project.user.name||="User "+project.user.id.to_s, project.user %></p>
+      <p class="project-description"><%= project.description %></p>
+      <p class="project-listed">Listed <%= time_ago_in_words(project.created_at) %> ago.</p>
+    </li>
   <% end %>
 </ul>
 

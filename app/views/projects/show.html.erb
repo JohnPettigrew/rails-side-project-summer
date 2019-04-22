@@ -1,3 +1,17 @@
 <% provide(:title, 'Project details') %>
 
-  <%= render @project %>
+<h1>Project details</h1>
+
+<div class="project">
+  <p class="project-name"><%= @project.name %></p>
+  <p class="project-owner">Created by<br><%= link_to @project.user.name||="User "+@project.user.id.to_s, @project.user %></p>
+  <p class="project-description"><%= @project.description %></p>
+  <p class="project-source">
+    <% if @project.source == "" %>
+      No source available
+    <% else %>
+      <a href="<%= @project.source %>">Source code location</a></p>
+    <% end %>
+  </p>
+  <p class="project-listed">Listed <%= time_ago_in_words(@project.created_at) %> ago.</p>
+</div>

@@ -17,8 +17,9 @@ header {
     height:100%;
     overflow:hidden;
 
-    &#logo{
+    a#logo{
       float:left;
+      padding: 5px 0 0 30px;
     }
 
     ul{
@@ -169,6 +170,22 @@ ul.index {
   .project-listed, .project-source {
     text-align:right;
   }
+}
+
+.project {
+  .project-name {
+    font-size: 24px;
+  }
+
+  .project-listed, .project-source {
+    text-align:right;
+  }
+}
+
+.extra-space-after:after {
+  content:" ";
+  display:inline-block;
+  width:15px;
 }
 
 // Pagination components
