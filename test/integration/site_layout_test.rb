@@ -12,7 +12,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'static_pages/home'
     assert_select "title", "#{@base_title}"
-    assert_select "header>a[href=?]", root_path, count: 1
+    assert_select "header>nav>a[href=?]", root_path, count: 1
     assert_select "header" do
       assert_select "li", text: "Home"
       assert_select "nav>ul>li>a[href=?]", root_path, count: 1
@@ -42,7 +42,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 #     assert_select "title", "#{@base_title}"
 #     get users_path
 #     assert_template 'layouts/users/index'
-#     assert_select "header>a[href=?]", root_path, count: 1
+#     assert_select "header>nav>a[href=?]", root_path, count: 1
 #     assert_select "header" do
 #       assert_select "li", text: "Home"
 #       assert_select "nav>ul>li>a[href=?]", root_path, count: 1
@@ -62,8 +62,8 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   test "Footer content" do
     get root_path
     assert_select "footer"
-    assert_select "footer>p>a[href=?]", about_path, count: 1
-    assert_select "footer>p>a[href=?]", privacy_path, count: 1
+    assert_select "footer>ul>li>a[href=?]", about_path, count: 1
+    assert_select "footer>ul>li>a[href=?]", privacy_path, count: 1
   end
 
   test "Privacy page" do
@@ -84,5 +84,11 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get users_path
     assert_response :success
     assert_template 'users/index'
+  end
+
+  test "Show projects list when logged out" do
+    get projects_path
+    assert_response :success
+    assert_template 'projects/index'
   end
 end

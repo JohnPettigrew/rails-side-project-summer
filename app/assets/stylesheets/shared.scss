@@ -117,3 +117,97 @@ input {
     font-size:100%;
   }
 }
+
+// Index pages for users and projects
+
+.content>h1 {
+  font-size:40px;
+  margin-top:120px;
+}
+
+ul.index {
+  padding-inline-start:0;
+
+  li {
+    list-style:none;
+    border-top: 3px #ccc solid;
+    padding: 15px;
+    min-height:48px;
+    clear:both;
+    &:last-of-type {
+      border-bottom:3px #ccc solid;
+    }
+    a {
+      font-weight:700;
+    }
+  }
+  .gravatar {
+    width:50px;
+    height:50px;
+    float:left;
+    padding-bottom:15px;
+  }
+  .user-name {
+    float:left;
+    padding: 15px;
+  }
+}
+
+.projects {
+  p {
+    margin:6px 0;
+  }
+
+  a {
+    text-decoration:none;
+    color:black;
+    &:hover {
+      text-decoration:underline;
+    }
+  }
+
+  .project-listed, .project-source {
+    text-align:right;
+  }
+}
+
+// Pagination components
+
+.pagination {
+  margin-left:auto;
+  margin-right:auto;
+  width:60%;
+  clear:both;
+  border:2px solid #ccc;
+  border-radius:7px;
+  padding:10px;
+
+  .previous_page {
+    border-right:2px solid #ccc;
+    padding:10px 10px 10px 0;
+  }
+
+  em {
+    padding:0 5px;
+    font-style:normal;
+    color:#ccc;
+  }
+
+  a {
+    padding:10px 5px;
+    color:black;
+    text-decoration:none;
+    &:hover {
+      text-decoration:underline;
+    }
+  }
+
+  .next_page {
+    border-left:2px solid #ccc;
+    padding: 10px 0 10px 10px;
+  }
+
+  .disabled {
+      color:#ccc;
+  }
+}

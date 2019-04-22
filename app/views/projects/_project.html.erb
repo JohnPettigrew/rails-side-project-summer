@@ -1,21 +1,16 @@
-<li id="project-<%= project.id %>">
-  <div>
-    <strong><% if current_page?(action:'index') %>
-      <%= link_to project.name, project_path(project.id) %>
-    <% else %>
-      <%= project.name %>
-    <% end %></strong>
-  </div>
+<li id="project project-<%= project.id %>">
+  <p class="project-name">Project name:
+  <% if current_page?(action:'index') %>
+    <%= link_to project.name, project_path(project.id) %>
+  <% else %>
+    <%= project.name %>
+  <% end %></p>
   <% if current_page?(controller:'projects') %>
-    <div><%= link_to project.user.name||="User "+project.user.id.to_s, project.user %></div>
+    <p class="project-owner">Owner: <%= link_to project.user.name||="User "+project.user.id.to_s, project.user %></p>
   <% end %>
-  <div><%= project.description %></div>
-  <% unless project.source == "" %>
-    <div><a href="<%= project.source %>">Source</a></div>
+  <p class="project-description"><%= project.description %></p>
+  <% unless project.source == "" && current_page?(controller:'projects') %>
+    <p class="project-source"><a href="<%= project.source %>">Source code location</a></p>
   <% end %>
-  <br>
-  <div>
-    Listed <%= time_ago_in_words(project.created_at) %> ago.
-  </div>
-  <br><br>
+  <p class="project-listed">Listed <%= time_ago_in_words(project.created_at) %> ago.</p>
 </li>
