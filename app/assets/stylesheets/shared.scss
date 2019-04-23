@@ -17,7 +17,7 @@ header {
     height:100%;
     overflow:hidden;
 
-    a#logo{
+    &#logo{
       float:left;
       padding: 5px 0 0 30px;
     }
@@ -106,9 +106,10 @@ label {
   }
 }
 
-input {
+input, textarea {
   display:block;
   margin-bottom:15px;
+  width:100%;
 
   &[type='checkbox'] {
     display:inline;
@@ -117,7 +118,18 @@ input {
   &[type='submit'] {
     font-size:100%;
   }
+
+  &.form-source {
+    margin-bottom:5px;
+  }
 }
+
+.small {
+  margin-top:0;
+  font-size:80%;
+}
+
+
 
 // Index pages for users and projects
 
