@@ -1,12 +1,13 @@
-<%= form_for(@project, url: yield(:form_url)) do |f| %>
-  <div><%= f.label :name %>
+  <div><%= f.label :name, "Name your project" %>
   <%= f.text_field :name %></div>
 
-  <div><%= f.label :description %>
-  <%= f.text_area :description, :rows => 3 %></div>
+  <div><%= f.label :description, "Briefly describe your project" %>
+  <%= f.text_area :description, :rows => 5 %></div>
 
-  <div><%= f.label :source %>
-  <%= f.url_field :source %></div>
+  <div>
+    <%= f.label :source, "Where will your source code be stored (e.g. GitHub or Bitbucket)?" %>
+    <%= f.url_field :source, class:'form-source' %>
+    <p class="small">Please include a complete URL to the repository, or leave this field blank. You can update this later if you need to.</p>
+  </div>
 
   <div><%= f.submit "Create my project" %></div>
-<% end %>

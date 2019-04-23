@@ -5,17 +5,18 @@
 
   <%= f.fields_for :projects, Project.new do |p|  %>
     <div>
-      <%= f.label 'Name the project you will start with' %>
+      <%= p.label 'Name the project you will start with' %>
       <%= p.text_field :name %>
     </div>
     <div>
-      <%= f.label 'Briefly describe your project' %>
+      <%= p.label 'Briefly describe your project' %>
       <%= p.text_area :description, :rows => 3 %>
     </div>
-    <div>
-      <%= f.label 'Where will your source code be stored (e.g. GitHub/Bitbucket). Please include a complete URL to the repository, or leave this field blank. You can update this later if you need to.' %>
-      <%= p.text_field :source %>
-    </div>
+  <div>
+    <%= p.label :source, "Where will your source code be stored (e.g. GitHub or Bitbucket)?" %>
+    <%= p.url_field :source, class:'form-source' %>
+    <p class="small">Please include a complete URL to the repository, or leave this field blank. You can update this later if you need to.</p>
+  </div>
   <% end %>
 
   <div class="field">

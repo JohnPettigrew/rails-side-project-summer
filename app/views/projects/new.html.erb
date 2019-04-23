@@ -1,12 +1,5 @@
+<h3>Congratulations on starting a new project!</h3>
+<p>Share what you're doing with other #SPSers by filling in this form.</p>
 <%= form_for (@project) do |f| %>
-  <div><%= f.label :name %>
-  <%= f.text_field :name %></div>
-
-  <div><%= f.label :description %>
-  <%= f.text_area :description, :rows => 3 %></div>
-
-  <div><%= f.label :source %>
-  <%= f.url_field :source %></div>
-
-  <div><%= f.submit "Create my project" %></div>
+  <%= render 'form' %>
 <% end %>
