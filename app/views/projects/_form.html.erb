@@ -1,5 +1,5 @@
 <%= form_for (@project) do |f| %>
-  <div><%= f.label :name, "Name your project" %>
+  <div><%= f.label :name, "Your project's name" %>
   <%= f.text_field :name %></div>
 
   <div><%= f.label :description, "Briefly describe your project" %>
@@ -11,5 +11,5 @@
     <p class="small">Please include a complete URL to the repository, or leave this field blank. You can update this later if you need to.</p>
   </div>
 
-  <div><%= f.submit "Create my project" %></div>
+  <div><%= f.submit "Save my project" %></div>
 <% end %>

@@ -32,6 +32,10 @@ class ProjectsController < ApplicationController
     @projects = Project.all.paginate(page: params[:page], per_page: 20)
   end
 
+  def edit
+   @project=Project.find(params[:id])
+  end
+
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
