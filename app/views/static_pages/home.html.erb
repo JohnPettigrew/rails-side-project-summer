@@ -2,13 +2,12 @@
   What is #sideprojectsummer?
 </h3>
 <ul>
-  <li>It's your chance to carve out time to code</li>
-  <li>1pm to 5pm each Friday from May 3rd to August 30th</li>
-  <li>Each Friday afternoon, tweet your questions, progress, ideas and results on <a href="https://twitter.com/search?q=sideprojectsummer" "target"="_blank">#sideprojectsummer</a> to get friendship, feedback and help from other friendly sideproject-ers</li>
-  <li>Do what you like: a tutorial, your first app, or a new programming language</li>
-  <li>There's no need to sign up. Join in by tweeting using the hashtag for as much or as little of each Friday afternoon as you can. Use your lunchbreak or ask your employer to contribute hours for your continuing professional development.
-  </li>
-  <li>If you do sign up here, you can <%= link_to "share your project", '#' %> with other participants to give them ideas of what they could do themselves. This also lets you hold yourself accountable for meeting your goals!
+  <li>It's your chance to carve out time to code, and <%= link_to "for your employer to benefit, too", image_path("A4posterwhy.jpg") %>.</li>
+  <li>1pm to 5pm each Friday from May 3rd to August 30th.</li>
+  <li>There's no sign up: instead, tweet your questions, progress, ideas and results on <%= link_to "#SideProjectSummer", "https://twitter.com/search?q=sideprojectsummer" %> to get friendship, feedback and help from other friendly sideproject-ers.</li>
+  <li>Do what you like: a tutorial, your first app, or a new programming language. <%= link_to "Here are some ideas", image_path("A4posterwhat.jpg") %>.</li>
+  <li>Use your lunchbreak, your summer hours (if your place of work does that) or ask your employer to contribute hours for your continuing professional development.</li>
+  <li>If you do sign up here, you can share your projects <%= link_to "(from here)", user_path(current_user) if current_user %> with other participants to give them ideas of what they could do themselves - and to hold yourself accountable for meeting your goals!
   </li>
   <li>Download, print and distribute A4 flyers to spread the word:</li>
   <%= link_to image_tag("A4poster.jpg", alt: "A4 poster for #SideProjectSummer"), image_path("A4poster.jpg"), class: "poster" %>
