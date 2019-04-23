@@ -1,7 +1,7 @@
 <li id="project project-<%= project.id %>">
   <p class="project-name">Project name:
     <%= link_to project.name, project_path(project.id) %></p>
-  <% if !current_page?(user_path(current_user)) %><p class="project-owner"><span class="extra-space-after">Created by: </span><%= link_to project.user.name||="User "+project.user.id.to_s, project.user %></p><% end %>
+  <% if user_signed_in? && !current_page?(user_path(current_user)) %><p class="project-owner"><span class="extra-space-after">Created by: </span><%= link_to project.user.name||="User "+project.user.id.to_s, project.user %></p><% end %>
   <p class="project-description"><%= project.description %></p>
   <p class="project-listed">Listed <%= time_ago_in_words(project.created_at) %> ago.</p>
 </li>
