@@ -102,7 +102,9 @@ label {
   display:block;
 
   &.remember_me {
-    display:inline;
+    display:inline-block;
+    vertical-align:middle;
+    margin-top:-10px;
   }
 }
 
@@ -112,7 +114,10 @@ input, textarea {
   width:100%;
 
   &[type='checkbox'] {
-    display:inline;
+    display:inline-block;
+    vertical-align:middle;
+    width:25px;
+    margin-top:5px;
   }
 
   &[type='submit'] {
