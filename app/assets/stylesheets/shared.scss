@@ -101,7 +101,7 @@ footer {
 label {
   display:block;
 
-  &.remember_me {
+  &.checkbox {
     display:inline-block;
     vertical-align:middle;
     margin-top:-10px;
@@ -134,7 +134,12 @@ input, textarea {
   font-size:80%;
 }
 
-
+.project-finished-field {
+  border-radius:7px;
+  padding:10px;
+  background-color:#fc948a;
+  margin-bottom:30px;
+}
 
 // Index pages for users and projects
 

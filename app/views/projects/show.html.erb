@@ -15,7 +15,12 @@
   </p>
   <p class="project-listed">Listed <%= time_ago_in_words(@project.created_at) %> ago.</p>
   <% if user_signed_in? && @project.user_id==current_user.id %>
-    <p><%= link_to "Change details for this project", edit_project_path %></p>
-    <p><%= link_to "Delete this project", @project, method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <p><%= link_to "Change details for this project", edit_project_path %><br>
+      <% if @project.finished || @project.finished="" %>
+        <%= link_to "Or mark the project as finished", edit_project_path %>
+      <% else %>
+        You finished this project!
+      <% end %></p>
+    <p><br><em><%= link_to "Delete this project", @project, method: :delete, data: { confirm: "Are you sure?" } %></em></p>
   <% end %>
 </div>

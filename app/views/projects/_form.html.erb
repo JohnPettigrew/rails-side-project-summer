@@ -8,8 +8,16 @@
   <div>
     <%= f.label :source, "Where will your source code be stored (e.g. GitHub or Bitbucket)?" %>
     <%= f.url_field :source, class:'form-source' %>
-    <p class="small">Please include a complete URL to the repository, or leave this field blank. You can update this later if you need to.</p>
+    <p class="small">This field lets you include a complete URL to where you're storing the code you're writing. Or you can leave this field blank if you prefer, but sharing your code helps other people learn, too!</p>
   </div>
+
+<!-- Should wrap this field in an IF statement so that it's not shown on the project-create page -->
+    <div class="project-finished-field">
+      <%= f.label :finished, "Ready to mark your project as finished?", class:"checkbox" %>
+      <%= f.check_box :finished %>
+      <p class="small">It doesn't matter whether you've created the Sistine chapel or something dank and dark that you never want to see again - you made the attempt and can claim the reward! Now, it's time to take the next step!</p>
+    </div>
+
 
   <div><%= f.submit "Save my project" %></div>
 <% end %>
