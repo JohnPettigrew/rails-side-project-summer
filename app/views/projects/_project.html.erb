@@ -1,10 +1,10 @@
 <!-- This partial is used to *list* projects on the All Projects and User Profile pages -->
 <li class="project" id="project-<%= project.id %>">
+  <% if project.finished %>
+    <%= image_tag("done-stamp.png", size: "71x41", alt: "Done!", class: "project-finished") %>
+  <% end %>
   <p class="project-name">Project name:
     <%= link_to project.name, project_path(project.id) %>
-    <% if project.finished %>
-      <%= image_tag("done-stamp.png", size: "71x41", alt: "Done!", class: "project-finished") %>
-    <% end %>
   </p>
   <% if user_signed_in? && !current_page?(user_path(current_user)) %>
     <p class="project-owner"><span class="extra-space-after">Created by: </span>

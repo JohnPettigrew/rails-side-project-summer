@@ -15,9 +15,9 @@
 <div>
   <% if @user.projects.any? %>
     <h4><%= @user.name %> has <%= pluralize(@user.projects.count, 'project') %></h4>
-    <ol class="index">
+    <ul class="index">
       <%= render @projects %>
-    </ol>
+    </ul>
   <% end %>
   <p class="new-project"><%= link_to "List a new project", new_project_path %></p>
 </div>
