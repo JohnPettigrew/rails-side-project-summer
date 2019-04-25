@@ -3,10 +3,11 @@
 <div class="profile-head">
   <%= gravatar_for @user, size: 100 %>
   <div class="profile-name"><%= @user.name||="Private" %></div>
-  <div class="profile-contact"><%= mail_to @user.email, "Contact" %></div>
-  <div class="profile-edit">
+  <div class="profile-contact">
     <% if current_user.id==@user.id %>
       <%= link_to "Edit your details", edit_user_registration_path %>
+    <% else %>
+      <%= mail_to @user.email, "Contact" %>
     <% end %>
   </div>
 </div>
