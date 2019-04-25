@@ -1,6 +1,10 @@
 <% provide(:title, 'Project details') %>
 
-<h1>Project details</h1>
+<h1>Project details
+  <% if @project.finished %>
+    <%= image_tag("done-stamp.png", size: "71x41", alt: "Done!", class: "project-finished") %>
+  <% end %>
+</h1>
 
 <div class="project">
   <p class="project-name"><%= @project.name %></p>
@@ -13,13 +17,15 @@
       <a href="<%= @project.source %>">Source code location</a></p>
     <% end %>
   </p>
-  <p class="project-listed">Listed <%= time_ago_in_words(@project.created_at) %> ago.</p>
+  <p class="project-listed">Listed <%= time_ago_in_words(@project.created_at) %> ago.
+    <% if @project.finished %>
+      <br>Completed <%= time_ago_in_words(@project.finished) %> ago.
+    <% end %>
+  </p>
   <% if user_signed_in? && @project.user_id==current_user.id %>
     <p><%= link_to "Change details for this project", edit_project_path %><br>
-      <% if @project.finished || @project.finished="" %>
-        <%= link_to "Or mark the project as finished", edit_project_path %>
-      <% else %>
-        You finished this project!
+      <% if !@project.finished %>
+        <%= link_to "Or mark it as finished", edit_project_path %>
       <% end %></p>
     <p><br><em><%= link_to "Delete this project", @project, method: :delete, data: { confirm: "Are you sure?" } %></em></p>
   <% end %>

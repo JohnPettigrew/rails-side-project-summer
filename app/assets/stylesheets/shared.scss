@@ -204,11 +204,16 @@ input, textarea {
 
 .project {
   .project-name {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .project-listed, .project-source {
     text-align:right;
+  }
+
+  .project-finished {
+    position:relative;
+    float:right;
   }
 }
 
