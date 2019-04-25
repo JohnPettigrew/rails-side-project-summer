@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user=User.new
     @user.projects.build
   end
 

@@ -14,17 +14,17 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      flash[:notice] = "Project created!"
+      flash[:success] = "Project created!"
       redirect_to user_path(current_user)
     else
-      @feed_items = []
+      flash[:danger] = "There was an error. Your project was not created."
       render 'static_pages/home'
     end
   end
 
   def destroy
     @project.destroy
-    flash[:notice] = "Project deleted"
+    flash[:success] = "Project deleted"
     redirect_to user_path(current_user)
   end
 
