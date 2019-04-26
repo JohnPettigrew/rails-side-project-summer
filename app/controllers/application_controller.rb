@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     render html: "If you're seeing this, something has gone badly wrong!"
   end
 
+  def after_sign_in_path_for(resource)
+    user_path(current_user)
+  end
+
   protected
 
   # Check http://devise.plataformatec.com.br/#strong-parameters for more details on configuring the below
