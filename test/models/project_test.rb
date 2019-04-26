@@ -11,8 +11,8 @@ class ProjectTest < ActiveSupport::TestCase
     assert @project.valid?
   end
 
-  test "User_id should be present" do
-    @project.user_id = nil
+  test "User should be present for project" do
+    @project.user = nil
     assert_not @project.valid?
   end
 
