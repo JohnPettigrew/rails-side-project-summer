@@ -129,6 +129,13 @@ input, textarea {
   }
 }
 
+input[required], textarea[required]{
+  background-image: radial-gradient(#F00 50%, transparent 16%);
+  background-size: 1em 1em;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
 .small {
   margin-top:0;
   font-size:80%;

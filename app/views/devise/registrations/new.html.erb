@@ -5,22 +5,22 @@
 
   <div class="field">
     <%= f.label 'Your name' %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", :tabindex => 1 %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :tabindex => 1, :required => true %>
   </div>
 
   <div class="field">
     <%= f.label 'Your email address' %><%= link_to ' (Check our privacy policy)', privacy_path %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :tabindex => 2 %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :tabindex => 2, :required => true %>
   </div>
 
   <%= f.fields_for :projects, Project.new do |p|  %>
     <div>
       <%= p.label 'Name the project you will start with' %>
-      <%= p.text_field :name, :tabindex => 3 %>
+      <%= p.text_field :name, :tabindex => 3, :required => true %>
     </div>
     <div>
       <%= p.label 'Briefly describe your project' %>
-      <%= p.text_area :description, :rows => 3, :tabindex => 4 %>
+      <%= p.text_area :description, :rows => 3, :tabindex => 4, :required => true %>
     </div>
   <div>
     <%= p.label :source, "Where will your source code be stored (e.g. GitHub or Bitbucket)?" %>
@@ -34,12 +34,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password", :tabindex => 6 %>
+    <%= f.password_field :password, autocomplete: "new-password", :tabindex => 6, :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", :tabindex => 7 %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :tabindex => 7, :required => true %>
   </div>
 
   <div class="actions">

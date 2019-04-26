@@ -1,9 +1,9 @@
 <%= form_for (@project) do |f| %>
   <div><%= f.label :name, "Your project's name" %>
-  <%= f.text_field :name %></div>
+  <%= f.text_field :name, :required => true %></div>
 
   <div><%= f.label :description, "Briefly describe your project" %>
-  <%= f.text_area :description, :rows => 5 %></div>
+  <%= f.text_area :description, :rows => 5, :required => true %></div>
 
   <div>
     <%= f.label :source, "Where will your source code be stored (e.g. GitHub or Bitbucket)?" %>
