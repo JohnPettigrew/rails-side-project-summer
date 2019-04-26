@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   root 'static_pages#home'
   get 'static_pages/home'
   get '/privacy', to: 'static_pages#privacy'
