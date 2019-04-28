@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all.paginate(page: params[:page], per_page: 20)
+    @projects = Project.all.page(params[:page]).per_page(20)
   end
 
   def edit

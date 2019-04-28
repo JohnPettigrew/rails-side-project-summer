@@ -1,7 +1,7 @@
 <% provide(:title, 'All participants') %>
 <h1>All participants</h1>
 
-<%= will_paginate %>
+<%= will_paginate :inner_window => 2, :outer_window => 0 %>
 
 <ul class="index users">
   <% @users.each do |user| %>
@@ -14,4 +14,4 @@
   <% end %>
 </ul>
 
-<%= will_paginate %>
+<%= will_paginate :inner_window => 2, :outer_window => 0 %>
