@@ -6,26 +6,33 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # You should also create an action method in this controller like this:
   def twitter
-    raise request.env["omniauth.auth"].inspect
+    auth=request.env["omniauth.auth"]
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = request.env["TWITTER_API_KEY"]
+      config.consumer_secret     = request.env["TWITTER_API_SECRET"]
+      config.access_token        = auth['params'].oauth_token
+      config.access_token_secret = auth['params'].oauth_token_secret
+    end
+    raise client
   end
 
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
 
   # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+  def passthru
+    super
+  end
 
   # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def failure
+    super
+  end
 
   # protected
 
   # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  def after_omniauth_failure_path_for(scope)
+    super(scope)
+  end
 end
