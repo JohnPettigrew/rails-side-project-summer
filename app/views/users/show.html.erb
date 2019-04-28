@@ -10,7 +10,6 @@
   <div class="profile-contact">
     <% if current_user.id==@user.id %>
       <%= link_to "Edit your details", edit_user_registration_path %>
-      <br><%= link_to "Connect to Twitter", user_twitter_omniauth_authorize_path %>
     <% else %>
       <%= mail_to @user.email, "Contact" %>
     <% end %>
