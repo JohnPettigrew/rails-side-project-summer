@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'will_paginate',           '~> 3.1.6'
 gem 'devise',                  '~> 4.6.2'
 gem 'omniauth-twitter'
+gem 'twitter'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
