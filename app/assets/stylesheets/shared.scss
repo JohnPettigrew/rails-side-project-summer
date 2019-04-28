@@ -44,6 +44,23 @@ header {
   }
 }
 
+@media (max-width: 900px) {
+  header {
+    font-size:14px;
+    nav{
+      a#logo{
+        padding: 5px 0 0 20px;
+      }
+
+      ul{
+        li {
+          padding:20px 20px 0 20px;
+        }
+      }
+    }
+  }
+}
+
 .nav-btn {
   background-color:#333;
 }

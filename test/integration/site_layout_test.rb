@@ -16,7 +16,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "header" do
       assert_select "li", text: "Home"
       assert_select "nav>ul>li>a[href=?]", root_path, count: 1
-      assert_select "li", text: "About #SideProjectSummer"
+      assert_select "li", text: "About"
       assert_select "nav>ul>li>a[href=?]", about_path, count: 1
       assert_select "li", text: "Participants"
       assert_select "nav>ul>li>a[href=?]", users_path, count: 1
