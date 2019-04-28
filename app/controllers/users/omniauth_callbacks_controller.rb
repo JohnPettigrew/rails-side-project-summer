@@ -6,14 +6,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # You should also create an action method in this controller like this:
   def twitter
-    auth=request.env["omniauth.auth"]
+    auth = request.env["omniauth.auth"]
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = request.env["TWITTER_API_KEY"]
-      config.consumer_secret     = request.env["TWITTER_API_SECRET"]
-      config.access_token        = auth['params'].oauth_token
-      config.access_token_secret = auth['params'].oauth_token_secret
+      config.consumer_key        = Rails.application.credentials.TWITTER_API_KEY
+      config.consumer_secret     = Rails.application.credentials.TWITTER_API_SECRET
+      config.access_token        = auth["credentials"]["token"]
+      config.access_token_secret = auth["credentials"]["secret"]
     end
-    raise client
+    client.home_timeline
   end
 
   # More info at:
