@@ -7,12 +7,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should also create an action method in this controller like this:
   def twitter
     auth = request.env["omniauth.auth"]
-#     client = Twitter::REST::Client.new do |config|
-#       config.consumer_key        = Rails.application.credentials.TWITTER_API_KEY
-#       config.consumer_secret     = Rails.application.credentials.TWITTER_API_SECRET
-#       config.access_token        = auth["credentials"]["token"]
-#       config.access_token_secret = auth["credentials"]["secret"]
-#    end
     current_user.update_columns(twitter_key: auth["credentials"]["token"])
     current_user.update_columns(twitter_secret: auth["credentials"]["secret"])
     redirect_to user_path(current_user)

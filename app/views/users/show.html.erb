@@ -30,4 +30,7 @@
 
 <%= will_paginate @projects, :inner_window => 2, :outer_window => 0 %>
 
+<%= @user.twitter_client.home_timeline %>
+
+
 <p class="new-project"><%= link_to "List a new project", new_project_path %></p>
