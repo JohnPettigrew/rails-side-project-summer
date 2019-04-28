@@ -250,15 +250,16 @@ input[required], textarea[required]{
 .pagination {
   margin-left:auto;
   margin-right:auto;
-  width:60%;
   clear:both;
   border:2px solid #ccc;
   border-radius:7px;
   padding:10px;
+  display:inline-block;
 
   .previous_page {
     border-right:2px solid #ccc;
     padding:10px 10px 10px 0;
+    width: 8em;
   }
 
   em {
@@ -279,6 +280,7 @@ input[required], textarea[required]{
   .next_page {
     border-left:2px solid #ccc;
     padding: 10px 0 10px 10px;
+    width: 8em;
   }
 
   .disabled {

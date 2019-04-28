@@ -1,7 +1,11 @@
 <% provide(:title, 'User profile') %>
 
 <div class="profile-head">
-  <%= gravatar_for @user, size: 100 %>
+  <% if @user.twitter_user_url %>
+    <%= image_tag(@user.twitter_user_url, :height=>"100px", :width=>"100px") %>
+  <% else %>
+    <%= gravatar_for @user, size: 100 %>
+  <% end %>
   <div class="profile-name"><%= @user.name||="Private" %></div>
   <div class="profile-contact">
     <% if current_user.id==@user.id %>
@@ -13,6 +17,8 @@
   </div>
 </div>
 
+<%= will_paginate @projects, :inner_window => 2, :outer_window => 0 %>
+
 <div>
   <% if @user.projects.any? %>
     <h4><%= @user.name %> has <%= pluralize(@user.projects.count, 'project') %></h4>
@@ -20,5 +26,8 @@
       <%= render @projects %>
     </ul>
   <% end %>
-  <p class="new-project"><%= link_to "List a new project", new_project_path %></p>
 </div>
+
+<%= will_paginate @projects, :inner_window => 2, :outer_window => 0 %>
+
+<p class="new-project"><%= link_to "List a new project", new_project_path %></p>
