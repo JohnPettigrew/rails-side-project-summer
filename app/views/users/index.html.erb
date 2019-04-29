@@ -7,11 +7,7 @@
   <% @users.each do |user| %>
     <li>
       <%= link_to user do %>
-        <% if user.twitter_user_url %>
-          <%= image_tag(user.twitter_user_url, :height=>"100px", :width=>"100px", :class=>"gravatar") %>
-        <% else %>
-          <%= gravatar_for user, size: 100 %>
-        <% end %>
+        <%= render 'user_profile_image' %>
         <span class="user-name"><%= user.name||="Private" %></span>
       <% end %>
     </li>
