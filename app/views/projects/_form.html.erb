@@ -1,23 +1,23 @@
 <%= form_for (@project) do |f| %>
   <div><%= f.label :name, "Your project's name" %>
-  <%= f.text_field :name, :required => true %></div>
+  <%= f.text_field :name, :tabindex => 1, :required => true %></div>
 
   <div><%= f.label :description, "Briefly describe your project" %>
-  <%= f.text_area :description, :rows => 5, :required => true %></div>
+  <%= f.text_area :description, :rows => 5, :tabindex => 2, :required => true %></div>
 
   <div>
     <%= f.label :source, "Where will your source code be stored (e.g. GitHub or Bitbucket)?" %>
-    <%= f.url_field :source, class:'form-source' %>
+    <%= f.url_field :source, class:'form-source', :tabindex => 3 %>
     <p class="small">This field lets you include a complete URL to where you're storing the code you're writing. Or you can leave this field blank if you prefer, but sharing your code helps other people learn, too!</p>
   </div>
 
   <% if !current_page?(action: 'new') %>
     <div class="project-finished-field">
-      <%= f.label :finished, "Ready to mark your project as finished?", class:"checkbox" %>
+      <%= f.label :finished, "Ready to mark your project as finished?", class:"checkbox", :tabindex => 4 %>
       <%= f.check_box :finished, {checked: !!@project.finished}, DateTime.now %>
       <p class="small">It doesn't matter whether you've created the Sistine chapel or something dank and dark that you never want to see again - you made the attempt and can claim the reward! Now, it's time to take the next step!</p>
     </div>
   <% end %>
 
-  <div><%= f.submit "Save my project" %></div>
+  <div><%= f.submit "Save my project", :tabindex => 5 %></div>
 <% end %>

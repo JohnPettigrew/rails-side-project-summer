@@ -2,14 +2,19 @@
 
 <div class="profile-head">
   <% if @user.twitter_user_url %>
-    <%= image_tag(@user.twitter_user_url, :height=>"100px", :width=>"100px") %>
+    <%= image_tag(@user.twitter_user_url, :height=>"100px", :width=>"100px", :class=>"gravatar") %>
   <% else %>
     <%= gravatar_for @user, size: 100 %>
   <% end %>
   <div class="profile-name"><%= @user.name||="Private" %></div>
   <div class="profile-contact">
     <% if current_user.id==@user.id %>
-      <%= link_to "Edit your details", edit_user_registration_path %>
+      <%= link_to "Edit your details", edit_user_registration_path %><br>
+      <% if !current_user.twitter_key %>
+        <%= link_to "Connect to Twitter", user_twitter_omniauth_authorize_path %>
+      <% else %>
+        <%= link_to "Disconnect from Twitter", '/twitter-disconnect.html' %>
+      <% end %>
     <% else %>
       <%= mail_to @user.email, "Contact" %>
     <% end %>
