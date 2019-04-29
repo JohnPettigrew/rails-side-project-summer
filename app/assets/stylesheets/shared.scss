@@ -256,6 +256,30 @@ input[required], textarea[required]{
   }
 }
 
+div.project {
+  .project-name{
+    font-weight:700;
+  }
+
+  .project-owner {
+    a {
+      text-decoration:none;
+      font-weight:700;
+      color:black;
+
+      &:hover {
+        text-decoration:underline;
+      }
+    }
+  }
+
+  .project-finished {
+    padding:0 15px 0 0;
+    margin-top:-10px;
+    float:left;
+  }
+}
+
 .extra-space-after:after {
   content:" ";
   display:inline-block;
