@@ -8,7 +8,7 @@
 
 User.create!(email: "john@wearefutureproofs.com", name: "John P", password:              "123456789", password_confirmation: "123456789")
 
-60.times do |n|
+25.times do |n|
   email = "example-#{n+1}@example.com"
   password = "password1"
   User.create!(email: email, name: Faker::Name.name, password: password, password_confirmation: password)

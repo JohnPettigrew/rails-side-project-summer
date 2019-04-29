@@ -6,12 +6,12 @@
 
   <div class="field">
     <%= f.label 'Your name' %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", :tabindex => 1, :required => true %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :tabindex => 2, :required => true %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= f.label "Password (leave blank if you don't want to change it)" %> <%= @minimum_password_length %> <i>characters minimum</i>
-    <%= f.password_field :password, autocomplete: "new-password", :tabindex => 3, :required => true %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
 
     <% end %>
@@ -28,13 +28,13 @@
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", :tabindex => 4, :required => true %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field action-fields submit">
     <%= f.label "Current password (to confirm your changes)" %>
-    <%= f.password_field :current_password, autocomplete: "current-password", :tabindex => 5, :required => true %>
-    <%= f.submit "Update", :tabindex => 6 %>
+    <%= f.password_field :current_password, autocomplete: "current-password", :required => true %>
+    <%= f.submit "Update" %>
   </div>
 
 <% end %>
