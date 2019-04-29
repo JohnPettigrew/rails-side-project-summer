@@ -14,19 +14,18 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      tweet_new_project(project_params)
-      flash[:success] = "Project created!"
-      tweet_new_project(project_params)
+      flash[:notice] = "Project created!"
+      tweet_project_change("I just started a new project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I'm doing at " + project_url(@project), "Project created and tweet posted!")
       redirect_to user_path(current_user)
     else
-      flash[:danger] = "There was an error. Your project was not created."
+      flash[:alert] = "There was an error. Your project was not created."
       render 'static_pages/home'
     end
   end
 
   def destroy
     @project.destroy
-    flash[:success] = "Project deleted"
+    flash[:notice] = "Project deleted"
     redirect_to user_path(current_user)
   end
 
@@ -41,16 +40,11 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
+      flash[:notice] = "Project updated"
       if @project.finished && @project.saved_change_to_finished?
-       tweet_finished_project
+        tweet_project_change("I just finished a project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I did at " + project_url(@project), "Project created and tweet posted!")
       else
-        tweet_updated_project
-      end
-      flash[:success] = "Project updated"
-      if @project.finished && @project.saved_change_to_finished?
-       tweet_finished_project
-      else
-        tweet_updated_project
+        tweet_project_change("I just updated a project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I'm doing at " + project_url(@project), "Project created and tweet posted!")
       end
       redirect_to user_path(current_user)
     else
@@ -69,45 +63,15 @@ class ProjectsController < ApplicationController
       redirect_to root_url if @project.nil?
     end
 
-    def tweet_new_project(params)
-      if current_user.twitter_key
-        project_name=@project.name[0..100]
-        tweet="I just started a new project for #SideProjectSummer! It's called '" + project_name + "' - see what I'm doing at " + project_url
-        if Rails.env.production?
-          current_user.twitter_details.update(tweet)
-          flash[:success]="Project created and tweeted!"
-        else
-          raise tweet
-        end
-      end
+    def project_abbrev_for_twitter
+      @project.name[0..100]
     end
 
-    def tweet_updated_project
+    def tweet_project_change(tweet, flash_notice)
       if current_user.twitter_key
-        project_name=@project.name[0..100]
-        tweet="I just updated a project for #SideProjectSummer! It's called '" + project_name + "' - see what I'm doing at " + project_url
         if Rails.env.production?
           current_user.twitter_details.update(tweet)
-<<<<<<< HEAD
-          flash[:success]="Project updated and tweeted!"
-=======
->>>>>>> parent of 7ca4b03... Revert "Merge branch 'twitter'"
-        else
-          raise tweet
-        end
-      end
-    end
-
-    def tweet_finished_project
-      if current_user.twitter_key
-        project_name=@project.name[0..100]
-        tweet="I just finished a project for #SideProjectSummer! It's called '" + project_name + "' - see what I did at " + project_url
-        if Rails.env.production?
-          current_user.twitter_details.update(tweet)
-<<<<<<< HEAD
-          flash[:success]="Project marked as finished and tweeted!"
-=======
->>>>>>> parent of 7ca4b03... Revert "Merge branch 'twitter'"
+          flash[:notice]=flash_notice
         else
           raise tweet
         end

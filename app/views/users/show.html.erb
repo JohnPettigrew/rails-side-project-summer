@@ -1,11 +1,7 @@
 <% provide(:title, 'User profile') %>
 
 <div class="profile-head">
-  <% if @user.twitter_user_url %>
-    <%= image_tag(@user.twitter_user_url, :height=>"100px", :width=>"100px", :class=>"gravatar") %>
-  <% else %>
-    <%= gravatar_for @user, size: 100 %>
-  <% end %>
+  <%= render 'user_profile_image' %>
   <div class="profile-name"><%= @user.name||="Private" %></div>
   <div class="profile-contact">
     <% if current_user.id==@user.id %>
