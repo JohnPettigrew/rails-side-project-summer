@@ -39,6 +39,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    project_params[:description]=project_params[:description][0..1499]
     if @project.update_attributes(project_params)
       flash[:notice] = "Project updated"
       if @project.finished && @project.saved_change_to_finished?
