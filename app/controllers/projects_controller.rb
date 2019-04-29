@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.build(project_params)
     if @project.save
       flash[:success] = "Project created!"
+      tweet_new_project(project_params)
       redirect_to user_path(current_user)
     else
       flash[:danger] = "There was an error. Your project was not created."
@@ -40,6 +41,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       flash[:success] = "Project updated"
+      if @project.finished && @project.saved_change_to_finished?
+       tweet_finished_project
+      else
+        tweet_updated_project
+      end
       redirect_to user_path(current_user)
     else
       render 'edit'
@@ -55,5 +61,44 @@ class ProjectsController < ApplicationController
     def correct_user
       @project = current_user.projects.find_by(id: params[:id])
       redirect_to root_url if @project.nil?
+    end
+
+    def tweet_new_project(params)
+      if current_user.twitter_key
+        project_name=@project.name[0..100]
+        tweet="I just started a new project for #SideProjectSummer! It's called '" + project_name + "' - see what I'm doing at " + project_url
+        if Rails.env.production?
+          current_user.twitter_details.update(tweet)
+          flash[:success]="Project created and tweeted!"
+        else
+          raise tweet
+        end
+      end
+    end
+
+    def tweet_updated_project
+      if current_user.twitter_key
+        project_name=@project.name[0..100]
+        tweet="I just updated a project for #SideProjectSummer! It's called '" + project_name + "' - see what I'm doing at " + project_url
+        if Rails.env.production?
+          current_user.twitter_details.update(tweet)
+          flash[:success]="Project updated and tweeted!"
+        else
+          raise tweet
+        end
+      end
+    end
+
+    def tweet_finished_project
+      if current_user.twitter_key
+        project_name=@project.name[0..100]
+        tweet="I just finished a project for #SideProjectSummer! It's called '" + project_name + "' - see what I did at " + project_url
+        if Rails.env.production?
+          current_user.twitter_details.update(tweet)
+          flash[:success]="Project marked as finished and tweeted!"
+        else
+          raise tweet
+        end
+      end
     end
 end
