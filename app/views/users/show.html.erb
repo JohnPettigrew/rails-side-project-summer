@@ -30,4 +30,6 @@
 
 <%= will_paginate @projects, :inner_window => 2, :outer_window => 0 %>
 
-<p class="new-project"><%= link_to "List a new project", new_project_path %></p>
+<% if @user.id==current_user.id %>
+  <p class="new-project"><%= link_to "List a new project", new_project_path %></p>
+<% end %>

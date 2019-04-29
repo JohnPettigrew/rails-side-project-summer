@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class LoggedOutNavigationTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
 
   def setup
+    @user=users(:one)
     @base_title = "#sideprojectsummer"
   end
 
@@ -52,7 +52,7 @@ class LoggedOutNavigationTest < ActionDispatch::IntegrationTest
   end
 
   test "Cannot read user profiles" do
-    get user_path(:one)
+    get user_path(@user)
     assert_response :redirect
   end
 end

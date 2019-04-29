@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
 
   def setup
     @user=users(:one)
+    @another_user=users(:two)
     @base_title = "#sideprojectsummer"
   end
 
@@ -30,19 +30,21 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     end
   end
 
-# This test isn't working - the commented-out portions should appear (and do in the browser) but don't in the test. Something odd is happening!
+# This test isn't working - the commented-out portions should appear (and do in the browser) but don't in the test. After signing in, the test can access restricted pages (e.g. user profiles) but doesn't see the correct header info.
   test "Header on home page when logged in" do
     get new_user_session_path
     assert_template 'devise/sessions/new'
     sign_in @user
     assert_response :success
-#     assert_template 'users/show'
-#     assert_select "p.alert", count: 1
-#     assert_select "p.alert-danger", count: 0
-#     assert_select "title", "#{@base_title}"
-#     get users_path
-#     assert_template 'layouts/users/index'
-#     assert_select "header>nav>a[href=?]", root_path, count: 1
+    get user_path(@user)
+    assert_response :success
+    assert_template 'users/show'
+    get user_path(@another_user)
+    assert_response :success
+    assert_template 'users/show'
+    get users_path
+    assert_template 'users/index'
+    assert_select "header>nav>a[href=?]", root_path, count: 1
 #     assert_select "header" do
 #       assert_select "li", text: "Home"
 #       assert_select "nav>ul>li>a[href=?]", root_path, count: 1
