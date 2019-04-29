@@ -37,8 +37,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Manually added gems
 gem 'will_paginate',           '~> 3.1.6'
 gem 'devise',                  '~> 4.6.2'
+<<<<<<< HEAD
 gem 'omniauth-twitter',         '~> 1.4.0'
 gem 'twitter',                  '~> 6.2.0'
+=======
+gem 'omniauth-twitter'
+gem 'twitter'
+>>>>>>> parent of 7ca4b03... Revert "Merge branch 'twitter'"
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
