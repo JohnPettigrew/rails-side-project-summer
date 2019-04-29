@@ -9,6 +9,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = request.env["omniauth.auth"]
     current_user.update_columns(twitter_key: auth["credentials"]["token"])
     current_user.update_columns(twitter_secret: auth["credentials"]["secret"])
+    img = auth["extra"]["raw_info"]["profile_image_url_https"]
+    img = img.sub! '_normal', '_200x200'
+    current_user.update_columns(twitter_user_url: img)
+    current_user.update_columns(uid: auth["extra"]["raw_info"]["id"])
+    current_user.update_columns(provider: "twitter")
     redirect_to user_path(current_user)
   end
 
