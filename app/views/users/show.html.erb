@@ -1,7 +1,7 @@
 <% provide(:title, 'User profile') %>
 
 <div class="profile-head">
-  <%= render 'user_profile_image' %>
+  <%= render 'user_profile_image', user: @user %>
   <div class="profile-name"><%= @user.name||="Private" %></div>
   <div class="profile-contact">
     <% if current_user.id==@user.id %>

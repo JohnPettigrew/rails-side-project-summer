@@ -1,5 +1,5 @@
-<% if @user.twitter_user_url %>
-  <%= image_tag(@user.twitter_user_url, :height=>"100px", :width=>"100px", :class=>"gravatar") %>
+<% if user.twitter_user_url %>
+  <%= image_tag(user.twitter_user_url, :height=>"100px", :width=>"100px", :class=>"gravatar") %>
 <% else %>
-  <%= gravatar_for @user, size: 100 %>
+  <%= gravatar_for user, size: 100 %>
 <% end %>
