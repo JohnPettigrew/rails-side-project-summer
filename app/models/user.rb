@@ -16,12 +16,4 @@ class User < ApplicationRecord
       config.access_token_secret = self.twitter_secret
     end
   end
-
-  def delete_twitter_details
-    self.update_columns(twitter_key: nil)
-    self.update_columns(twitter_secret: nil)
-    self.update_columns(twitter_user_url: nil)
-    self.update_columns(uid: nil)
-    self.update_columns(provider: nil)
-  end
 end

@@ -14,6 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     current_user.update_columns(twitter_user_url: img)
     current_user.update_columns(uid: auth["extra"]["raw_info"]["id"])
     current_user.update_columns(provider: "twitter")
+    flash[:notice]="Successfully connected your account to Twitter!"
     redirect_to user_path(current_user)
   end
 

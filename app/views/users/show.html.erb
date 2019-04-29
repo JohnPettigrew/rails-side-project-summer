@@ -9,7 +9,7 @@
       <% if !current_user.twitter_key %>
         <%= link_to "Connect to Twitter", user_twitter_omniauth_authorize_path %>
       <% else %>
-        <%= link_to "Disconnect from Twitter", '/twitter-disconnect.html' %>
+        <%= link_to "Disconnect from Twitter", '/twitter_disconnect.html' %>
       <% end %>
     <% else %>
       <%= mail_to @user.email, "Contact" %>

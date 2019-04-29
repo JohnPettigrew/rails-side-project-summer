@@ -18,3 +18,13 @@ three:
   email: three@example.com
   name: "Three"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
+
+twitter:
+  email: twitter@example.com
+  name: "Twitter"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
+  twitter_key: "foo"
+  twitter_secret: "foo"
+  uid: "foo"
+  provider: "foo"
+

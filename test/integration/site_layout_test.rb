@@ -4,6 +4,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   def setup
+    @user=users(:one)
     @base_title = "#sideprojectsummer"
   end
 
@@ -33,12 +34,11 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   test "Header on home page when logged in" do
     get new_user_session_path
     assert_template 'devise/sessions/new'
-    @user=users(:one)
-    post new_user_session_path(email: @user.email, password: 'password123')
-#     assert_response :success
-#     assert_select "p.alert-success", count: 1
+    sign_in @user
+    assert_response :success
+#     assert_template 'users/show'
+#     assert_select "p.alert", count: 1
 #     assert_select "p.alert-danger", count: 0
-#     assert_template 'static_pages/home'
 #     assert_select "title", "#{@base_title}"
 #     get users_path
 #     assert_template 'layouts/users/index'

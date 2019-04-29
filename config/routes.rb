@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   get '/about', to: 'static_pages#about'
   resources :users
-  get 'twitter-disconnect', to: 'users#twitter-disconnect'
+  get 'twitter_disconnect', to: 'users#twitter_disconnect', controller: 'users'
   resources :projects
 end
