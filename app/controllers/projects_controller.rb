@@ -75,10 +75,7 @@ class ProjectsController < ApplicationController
         tweet="I just started a new project for #SideProjectSummer! It's called '" + project_name + "' - see what I'm doing at " + project_url
         if Rails.env.production?
           current_user.twitter_details.update(tweet)
-<<<<<<< HEAD
           flash[:success]="Project created and tweeted!"
-=======
->>>>>>> parent of 7ca4b03... Revert "Merge branch 'twitter'"
         else
           raise tweet
         end

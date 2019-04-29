@@ -2,11 +2,7 @@
 
 <div class="profile-head">
   <% if @user.twitter_user_url %>
-<<<<<<< HEAD
-    <%= image_tag(@user.twitter_user_url, :height=>"100px", :width=>"100px", :class="gravatar") %>
-=======
     <%= image_tag(@user.twitter_user_url, :height=>"100px", :width=>"100px", :class=>"gravatar") %>
->>>>>>> parent of 7ca4b03... Revert "Merge branch 'twitter'"
   <% else %>
     <%= gravatar_for @user, size: 100 %>
   <% end %>
