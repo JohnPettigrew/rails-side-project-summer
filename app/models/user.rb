@@ -6,8 +6,6 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[twitter]
 
   def self.from_omniauth(auth)
-    user.twitter_user_url = current_user.update_columns(twitter_key: auth["credentials"]["token"])
-      # assuming the user model has an image
   end
 
   def twitter_details
