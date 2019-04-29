@@ -10,7 +10,7 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
   end
 
   # Sign-out test not working now
-  test "Reach links from header" do
+  test "Can reach links from header" do
     sign_in @user
     get root_path
     assert_response :success
@@ -24,28 +24,21 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'users/index'
     assert_select "title", "All participants | #{@base_title}"
-    assert_select ".users>li", minimum: 1
     get projects_path
     assert_response :success
     assert_template 'projects/index'
     assert_select "title", "All projects | #{@base_title}"
-    assert_select ".projects>.project", minimum: 1
     get user_path(@user)
     assert_response :success
     assert_template 'users/show'
     assert_select "title", "User profile | #{@base_title}"
-    assert_select ".gravatar", count: 1
-    assert_select ".profile-name", count: 1
-    assert_select ".profile-contact", count: 1
-    assert_select "a", "Connect to Twitter"
-    assert_select "a", "List a new project"
 #     get destroy_user_session_path(@user)
 #     assert_response :success
 #     assert_template 'static_pages/home'
 #     assert_select "title", "#{@base_title}"
   end
 
-  test "Read project details" do
+  test "Can read project details" do
     sign_in @user
     get project_path(@project)
     assert_response :success
@@ -55,7 +48,20 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_select ".project-description", count: 1
     assert_select ".project-source", count: 1
     assert_select ".project-listed", count: 1
-#    assert_select ".project-edit", count: 1 #Again, not finding this even though should be logged in!
+#    assert_select ".project-edit", count: 1 #Can't match projects to users in fixtures, so this fails
+  end
+
+  test "Can edit project details" do
+    sign_in @user
+    get edit_project_path(@project)
+    assert_response :success
+    assert_template 'projects/_form'
+    assert_select "input", count: 7
+    assert_select "#project_name", count: 1
+    assert_select "#project_description", count: 1
+    assert_select "#project_source", count: 1
+    assert_select "#project_finished", count: 1
+    assert_select ".project-finished-field", count: 1
   end
 
   test "Can read user profiles" do
@@ -63,10 +69,11 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_response :success
     assert_template 'users/show'
-    assert_select ".gravatar", count: 1 #Most elements on this page are, oddly, not findable in this test
+    assert_select ".gravatar", count: 1
     assert_select ".profile-name", count: 1
     assert_select ".profile-contact", count: 1
     assert_select "a", "Connect to Twitter"
+    assert_select "a[href=?]", user_twitter_omniauth_authorize_path
     assert_select "ul.index", count: 1
     assert_select "li.project", count: 3
     assert_select "a", "List a new project"
@@ -76,5 +83,12 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert_select ".project-listed", count: 1
     assert_select ".new-project", count: 0
+  end
+
+  test "Can edit own user profile" do
+    sign_in @user
+    get edit_user_registration_path(@user)
+    assert_response :success
+    assert_template 'devise/registrations/edit'
   end
 end
