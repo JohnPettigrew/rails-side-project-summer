@@ -8,10 +8,7 @@
 - ~As a visitor, I can add a line to the list with my name and details of my project so that I can make myself accountable for delivering it, and inspire other people to take part themselves.~
 - As a visitor, I can view the privacy policy of the site so that I know what will be done with my data.
 - ~As a visitor, I can view a list of participants, their team and their project, so that I can see what other people are doing and gather inspiration.~
-- As a visitor, I can sign up to a mailing list to get updates about \#SideProjectSummer.
 - ~As a visitor, I can ask an admin to delete an entry I made in error (request to include enough detail to identify the entry and me as its owner) so that I can get errors corrected.~
-- As an admin, I can delete any entry so that we can avoid unwanted or erroneous content.
-- As an admin, I can send update emails to people who have signed up for updates about \#SideProjectSummer so that they get those updates.
 
 ### Should have
 
@@ -21,11 +18,14 @@
 - ~As a member, I can reset my password if I forget it, so that I can access my account.~
 - ~As a member, I can add public contact details to my account (email, web, social, bio), so that people can see who I am and get in touch.~
 - ~As a project owner, I can add a GitHub/Bitbucket/whatever link to my project, so that people can see the code and the project's current state.~
+- As an admin, I can delete any entry so that we can avoid unwanted or erroneous content.
+- As an admin, I can send update emails to people who have signed up for updates about \#SideProjectSummer so that they get those updates.
 - As an admin, I can edit any entry, so that we can avoid mistakes and unwanted content.
 - As an admin, I can delete or suspend any user, so that we can avoid unwanted or erroneous accounts.
 
 ### Nice to have
 
+- As a visitor, I can sign up to a mailing list to get updates about \#SideProjectSummer.
 - As a project owner, I can add updates to my project so that people can see how we're doing.
 - As a member, I can ask to get updates on the status of a particular project.
 - As a project owner, I can indicate that I'm interested in having other users help me with my project.
