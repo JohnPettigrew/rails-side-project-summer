@@ -10,7 +10,7 @@
         <%= render 'user_profile_image', user: user %>
         <span class="user-name"><%= user.name||="Private" %></span>
       <% end %>
-      <% if can? :edit, user %><div class="edit-delete-user-link"><%= link_to "Edit/delete", edit_user_registration_path %></div><% end %>
+      <% if current_user.admin %><div class="delete-user-link"><%= link_to "Delete user", admin_destroy_user_path(user), method: :delete, data: { confirm: "Are you sure you want to delete user "+user.name } %></div><% end %>
     </li>
   <% end %>
 </ul>

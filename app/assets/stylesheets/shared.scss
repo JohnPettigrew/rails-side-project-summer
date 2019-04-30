@@ -197,10 +197,11 @@ input[required], textarea[required]{
     &:last-of-type {
       border-bottom:3px #ccc solid;
     }
-    .edit-delete-user-link {
+    .delete-user-link {
       float:right;
       padding: 15px 0;
       color:black;
+      font-style:italic;
       &:hover {
         text-decoration:underline;
       }

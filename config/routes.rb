@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get '/privacy', to: 'static_pages#privacy'
   get '/about', to: 'static_pages#about'
+  match 'users/:id' => 'users#destroy', via: :delete, as: :admin_destroy_user
+  match 'users/:id' => 'users#show', via: :show, as: :user
   resources :users
   get 'twitter_disconnect', to: 'users#twitter_disconnect', controller: 'users'
   resources :projects
