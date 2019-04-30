@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :except => [:show, :index]
   before_action :correct_user, only: [:destroy, :update]

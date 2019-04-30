@@ -39,6 +39,7 @@ gem 'will_paginate',           '~> 3.1.6'
 gem 'devise',                  '~> 4.6.2'
 gem 'omniauth-twitter',         '~> 1.4.0'
 gem 'twitter',                  '~> 6.2.0'
+gem 'cancancan'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

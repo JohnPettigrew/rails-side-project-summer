@@ -6,7 +6,7 @@
   <p class="project-name">Project name:
     <%= link_to project.name, project_path(project.id) %>
   </p>
-  <% if user_signed_in? && !current_page?(user_path(current_user)) %>
+  <% if current_page?(project_path(project.id)) || current_page?(projects_path) %>
     <p class="project-owner"><span class="extra-space-after">Created by: </span>
       <%= link_to project.user.name||="User "+project.user.id.to_s, project.user %>
     </p>

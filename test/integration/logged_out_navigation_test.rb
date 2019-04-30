@@ -62,7 +62,7 @@ class LoggedOutNavigationTest < ActionDispatch::IntegrationTest
     assert_select "h1", text="All projects"
     assert_select ".projects>.project", count: 4
     assert_select ".project-name", count: 4
-#    assert_select ".project-owner", count: 4 #Doesn't work for some reason
+    assert_select ".project-owner", count: 4
     assert_select ".project-description", count: 4
     assert_select ".project-listed", count: 4
     assert_select "a[href=?]", title=new_project_path

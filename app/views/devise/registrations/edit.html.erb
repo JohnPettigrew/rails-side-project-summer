@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= f.label "Password (leave blank if you don't want to change it)" %> <%= @minimum_password_length %> <i>characters minimum</i>
-    <%= f.password_field :password, autocomplete: "new-password", :tabindex => 3, :required => true %>
+    <%= f.password_field :password, autocomplete: "new-password", :tabindex => 3 %>
     <% if @minimum_password_length %>
 
     <% end %>
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", :tabindex => 4, :required => true %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :tabindex => 4 %>
   </div>
 
   <div class="field action-fields submit">

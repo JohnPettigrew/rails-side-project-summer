@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :except => [:index]
 

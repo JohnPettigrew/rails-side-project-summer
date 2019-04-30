@@ -44,7 +44,7 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_select ".project-description", count: 1
     assert_select ".project-source", count: 1
     assert_select ".project-listed", count: 1
-#    assert_select ".project-edit", count: 1 #Can't match projects to users in fixtures, so this fails, rendering this whole test pointless for logged-in user!
+#    assert_select ".project-edit", count: 1 #Not sure why this doesn't work when the test to list projects on profile page does work
   end
 
   test "Can read user profiles" do
