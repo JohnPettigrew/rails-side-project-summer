@@ -22,7 +22,7 @@
     <% end %>
   </p>
   <% if can? :edit, @project %>
-    <p clas="project-edit"><%= link_to "Change details for this project", edit_project_path %><br>
+    <p class="project-edit"><%= link_to "Change details for this project", edit_project_path %><br>
       <% if !@project.finished %>
         <%= link_to "Or mark it as finished", edit_project_path %>
       <% end %></p>

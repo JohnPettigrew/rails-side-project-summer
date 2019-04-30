@@ -44,7 +44,7 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_select ".project-description", count: 1
     assert_select ".project-source", count: 1
     assert_select ".project-listed", count: 1
-#    assert_select ".project-edit", count: 1 #Not sure why this doesn't work when the test to list projects on profile page does work
+    assert_select ".project-edit", count: 1
   end
 
   test "Can read user profiles" do

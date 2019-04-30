@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all.page(params[:page]).per_page(20)
+    @projects = Project.all.page(params[:page]).per_page(10)
   end
 
   def edit
