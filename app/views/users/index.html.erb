@@ -9,8 +9,8 @@
       <%= link_to user do %>
         <%= render 'user_profile_image', user: user %>
         <span class="user-name"><%= user.name||="Private" %></span>
-        <% if can? :edit, user %><span class="user-delete"><%= link_to "Edit/delete", edit_user_registration_path %></span><% end %>
       <% end %>
+      <% if can? :edit, user %><div class="edit-delete-user-link"><%= link_to "Edit/delete", edit_user_registration_path %></div><% end %>
     </li>
   <% end %>
 </ul>
