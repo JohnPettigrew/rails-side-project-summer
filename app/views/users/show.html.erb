@@ -5,7 +5,7 @@
   <div class="profile-name"><%= @user.name||="Private" %></div>
   <div class="profile-contact">
     <% if can? :edit, @user %>
-      <%= link_to "Edit your details", edit_user_registration_path %><br>
+      <%= link_to "Edit or delete your account", edit_user_registration_path %><br>
       <% if !current_user.twitter_key %>
         <%= link_to "Connect to Twitter", user_twitter_omniauth_authorize_path %>
       <% else %>
@@ -30,6 +30,6 @@
 
 <%= will_paginate @projects, :inner_window => 2, :outer_window => 0 %>
 
-<% if user_signed_in? && current_page?(user_path(current_user.id)) %>
+<% if (can? :create, Project) && current_page?(user_path(current_user.id)) %>
   <p class="new-project"><%= link_to "List a new project", new_project_path %></p>
 <% end %>
