@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
       else
         tweet_project_change("I just updated a project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I'm doing at " + project_url(@project), "Project created and tweet posted!")
       end
-      redirect_to user_path(current_user)
+      redirect_to project_path(@project)
     else
       render 'edit'
     end
@@ -74,7 +74,7 @@ class ProjectsController < ApplicationController
           current_user.twitter_details.update(tweet)
           flash[:notice]=flash_notice
         else
-          raise tweet
+          flash[:notice]="In Production, I would have tweeted: " + tweet
         end
       end
     end
