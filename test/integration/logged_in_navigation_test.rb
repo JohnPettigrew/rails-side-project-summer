@@ -9,7 +9,6 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     @project=projects(:orange)
   end
 
-  # Sign-out test not working now
   test "Can reach links from header" do
     sign_in @user
     get root_path
@@ -32,10 +31,7 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'users/show'
     assert_select "title", "User profile | #{@base_title}"
-#     get destroy_user_session_path(@user)
-#     assert_response :success
-#     assert_template 'static_pages/home'
-#     assert_select "title", "#{@base_title}"
+#    delete destroy_user_session_path(@user) #Not sure how to test this properly
   end
 
   test "Can read project details" do
@@ -48,20 +44,7 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_select ".project-description", count: 1
     assert_select ".project-source", count: 1
     assert_select ".project-listed", count: 1
-#    assert_select ".project-edit", count: 1 #Can't match projects to users in fixtures, so this fails
-  end
-
-  test "Can edit project details" do
-    sign_in @user
-    get edit_project_path(@project)
-    assert_response :success
-    assert_template 'projects/_form'
-    assert_select "input", count: 7
-    assert_select "#project_name", count: 1
-    assert_select "#project_description", count: 1
-    assert_select "#project_source", count: 1
-    assert_select "#project_finished", count: 1
-    assert_select ".project-finished-field", count: 1
+#    assert_select ".project-edit", count: 1 #Can't match projects to users in fixtures, so this fails, rendering this whole test pointless for logged-in user!
   end
 
   test "Can read user profiles" do
@@ -83,12 +66,5 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert_select ".project-listed", count: 1
     assert_select ".new-project", count: 0
-  end
-
-  test "Can edit own user profile" do
-    sign_in @user
-    get edit_user_registration_path(@user)
-    assert_response :success
-    assert_template 'devise/registrations/edit'
   end
 end

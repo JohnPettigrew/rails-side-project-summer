@@ -51,6 +51,8 @@ class LoggedOutNavigationTest < ActionDispatch::IntegrationTest
   test "Cannot read user profiles" do
     get user_path(@user)
     assert_response :redirect
+    follow_redirect!
+    assert_template 'devise/sessions/new'
   end
 
   test "Can read project list" do
