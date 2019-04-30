@@ -245,6 +245,11 @@ input[required], textarea[required]{
     margin-block-start:8px;
   }
 
+  .project-description {
+    max-width:400px;
+    overflow:auto;
+  }
+
   .project-listed, .project-source {
     text-align:right;
   }
