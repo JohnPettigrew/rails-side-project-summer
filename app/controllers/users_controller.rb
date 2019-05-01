@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   def admin_destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path, notice: "User deleted." if @user.destroy
+    if @user.destroy
+      redirect_to users_path, notice: "User " + @user.name + " deleted."
+    else
+      redirect_to users_path, alert: "User deletion failed. Please try again."
+    end
   end
 
   def admin_edit
@@ -25,7 +29,7 @@ class UsersController < ApplicationController
   def admin_patch
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to users_path, notice: "User updated. " + @user.name + " ~~ " + @user.email
+      redirect_to users_path, notice: "User updated. New details: " + @user.name + " at " + @user.email
     else
       redirect_to users_path, alert: "Update failed. Please try again."
     end
