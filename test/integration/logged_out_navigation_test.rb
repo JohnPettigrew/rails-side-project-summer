@@ -42,10 +42,10 @@ class LoggedOutNavigationTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'users/index'
     assert_select "title", "All participants | #{@base_title}"
-    assert_select ".users>li", count: 4
+    assert_select ".users>li", count: 5
     assert_select "a[href=?]", title=user_path(@user)
-    assert_select ".gravatar", count: 4
-    assert_select ".user-name", count: 4
+    assert_select ".gravatar", count: 5
+    assert_select ".user-name", count: 5
   end
 
   test "Cannot read user profiles" do
@@ -65,7 +65,7 @@ class LoggedOutNavigationTest < ActionDispatch::IntegrationTest
     assert_select ".project-owner", count: 4
     assert_select ".project-description", count: 4
     assert_select ".project-listed", count: 4
-    assert_select "a[href=?]", title=new_project_path
+    assert_select "a[href=?]", title=new_project_path, count: 0
   end
 
   test "Can read project details" do
