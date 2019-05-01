@@ -41,16 +41,27 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     project_params[:description]=project_params[:description][0..1499]
-    if @project.update_attributes(project_params)
-      flash[:notice] = "Project updated"
-      if @project.finished && @project.saved_change_to_finished?
-        tweet_project_change("I just finished a project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I did at " + project_url(@project), "Project created and tweet posted!")
+    if current_user.admin && @project.user_id!=current_user.id
+      if @project.update_columns(name: project_params[:name], description: project_params[:description], source: project_params[:source], finished: project_params[:finished])
+        flash[:notice] = "Project updated"
+        redirect_to project_path(@project)
       else
-        tweet_project_change("I just updated a project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I'm doing at " + project_url(@project), "Project created and tweet posted!")
+        flash[:alert] = "Attempted update failed"
+        render 'edit'
       end
-      redirect_to project_path(@project)
     else
-      render 'edit'
+      if @project.update_attributes(project_params)
+        flash[:notice] = "Project updated"
+        if @project.finished && @project.saved_change_to_finished?
+          tweet_project_change("I just finished a project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I did at " + project_url(@project), "Project created and tweet posted!")
+        else
+          tweet_project_change("I just updated a project for #SideProjectSummer! It's called '" + project_abbrev_for_twitter + "' - see what I'm doing at " + project_url(@project), "Project created and tweet posted!")
+        end
+        redirect_to project_path(@project)
+      else
+        flash[:alert] = "Attempted update failed"
+        render 'edit'
+      end
     end
   end
 
@@ -62,7 +73,7 @@ class ProjectsController < ApplicationController
 
     def correct_user
       @project = current_user.projects.find_by(id: params[:id])
-      redirect_to root_url if @project.nil?
+      redirect_to root_url if @project.nil? && !current_user.admin
     end
 
     def project_abbrev_for_twitter

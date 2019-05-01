@@ -44,7 +44,7 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_select ".project-description", count: 1
     assert_select ".project-source", count: 1
     assert_select ".project-listed", count: 1
-    assert_select ".project-edit", count: 1
+    assert_select ".project-edit>a[href=?]", edit_project_path(@project), count: 2
   end
 
   test "Can read user profiles" do
@@ -55,8 +55,8 @@ class LoggedInNavigationTest < ActionDispatch::IntegrationTest
     assert_select ".gravatar", count: 1
     assert_select ".profile-name", count: 1
     assert_select ".profile-contact", count: 1
-    assert_select "a", "Connect to Twitter"
-    assert_select "a[href=?]", user_twitter_omniauth_authorize_path
+    assert_select ".profile-contact>a[href=?]", edit_user_registration_path
+    assert_select ".profile-contact>a[href=?]", user_twitter_omniauth_authorize_path
     assert_select "ul.index", count: 1
     assert_select "li.project", count: 3
     assert_select "a", "List a new project"

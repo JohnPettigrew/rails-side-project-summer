@@ -29,8 +29,16 @@ class AdminUserTest < ActionDispatch::IntegrationTest
   end
 
   test "Can edit other users from their profiles" do
+    sign_in @admin
+    get user_path(@user)
+    assert_response :success
+    assert_select ".profile-contact>a[href=?]", admin_edit_user_path
   end
 
   test "Can edit other users' projects" do
+    sign_in @admin
+    get project_path(@project)
+    assert_response :success
+    assert_select ".project-edit>a[href=?]", edit_project_path(@project), count: 2
   end
 end
