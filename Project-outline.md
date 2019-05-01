@@ -20,8 +20,8 @@
 - ~As a member, I can connect my Twitter account so that I can use my Twitter avatar and also get updates to my projects tweeted automatically.~
 - ~As a project owner, I can add a GitHub/Bitbucket/whatever link to my project, so that people can see the code and the project's current state.~
 - ~As an admin, I can delete any entry so that we can avoid unwanted or erroneous content.~
+- ~As an admin, I can edit or delete any project, so that we can avoid mistakes and unwanted content.~
 - As an admin, I can ~delete or~ suspend any user, so that we can avoid unwanted or erroneous accounts.
-- As an admin, I can edit or delete any project, so that we can avoid mistakes and unwanted content.
 - As an admin, I can send update emails to people who have signed up for updates about \#SideProjectSummer so that they get those updates.
 
 ### Nice to have
