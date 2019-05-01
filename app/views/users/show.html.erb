@@ -2,7 +2,9 @@
 
 <div class="profile-head">
   <%= render 'user_profile_image', user: @user %>
-  <div class="profile-name"><%= @user.name||="Private" %></div>
+  <div class="profile-name"><%= @user.name||="Private" %>
+    <span class="user-admin"><%= " (is an admin)" if @user.admin %></span>
+  </div>
   <div class="profile-contact">
     <% if current_user.id==@user.id %>
       <%= link_to "Edit/delete your account", edit_user_registration_path %><br>
@@ -13,7 +15,7 @@
       <% end %>
     <% else %>
       <% if can? :update, @user %>
-        <%= link_to "Edit/delete this account", admin_edit_user_path(id: @user.id) %>
+        <%= link_to "Edit/delete this account", admin_edit_user_path %>
       <% else %>
         <%= mail_to @user.email, "Contact" %>
       <% end %>
