@@ -6,9 +6,9 @@
 
 - ~As a visitor, I can see a description of \#SideProjectSummer on the home page so that I know what the site is about.~
 - ~As a visitor, I can add a line to the list with my name and details of my project so that I can make myself accountable for delivering it, and inspire other people to take part themselves.~
-- As a visitor, I can view the privacy policy of the site so that I know what will be done with my data.
 - ~As a visitor, I can view a list of participants, their team and their project, so that I can see what other people are doing and gather inspiration.~
 - ~As a visitor, I can ask an admin to delete an entry I made in error (request to include enough detail to identify the entry and me as its owner) so that I can get errors corrected.~
+- As a visitor, I can view the privacy policy of the site so that I know what will be done with my data.
 
 ### Should have
 
@@ -27,10 +27,10 @@
 ### Nice to have
 
 - ~As a visitor, I can see a gravatar for any user account so that I can easily identify people from their standard online visual identity.~
-- As a visitor, I can sign up to a mailing list to get updates about \#SideProjectSummer.
 - As a project owner, I can add updates to my project so that people can see how we're doing.
 - As a member, I can ask to get updates on the status of a particular project.
 - As a project owner, I can indicate that I'm interested in having other users help me with my project.
 - As a member, I can indicate that I'd like to help with a project that's asking for help, so that I can do something interesting with my summer.
 - As a member, I can have my own project and also associated projects, so that I can do my own work but also help other people.
 - As a member, I can upvote any project so that its members can be encouraged by my interest.
+- As a visitor, I can sign up to a mailing list to get updates about \#SideProjectSummer.
