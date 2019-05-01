@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = "Sorry but you cannot perform that action." + (" Try logging in and trying again." if !user_signed_in?)
+  redirect_back fallback_location: root_url
+end
 
   def hello
     render html: "If you're seeing this, something has gone badly wrong!"

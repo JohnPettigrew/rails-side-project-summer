@@ -12,7 +12,11 @@
         <%= link_to "Disconnect from Twitter", '/twitter_disconnect.html' %>
       <% end %>
     <% else %>
-      <%= mail_to @user.email, "Contact" %>
+      <% if can? :update, @user %>
+        <%= link_to "Edit/delete this account", admin_edit_user_path(id: @user.id) %>
+      <% else %>
+        <%= mail_to @user.email, "Contact" %>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,41 @@
+<% provide(:title, "Edit your profile") %>
+<h3>Edit your profile</h3>
+
+<%= form_for(@user, url: admin_patch_user_path(@user)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
+
+  <div class="field">
+    <%= f.label 'Your name' %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :tabindex => 1, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :tabindex => 2, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Password (leave blank if you don't want to change it)" %> <%= @minimum_password_length %> <i>characters minimum</i>
+    <%= f.password_field :password, autocomplete: "new-password", :tabindex => 3 %>
+    <% if @minimum_password_length %>
+
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :tabindex => 4 %>
+  </div>
+
+  <div class="field action-fields submit">
+    <%= f.submit "Update", :tabindex => 6 %>
+  </div>
+
+<% end %>
+
+<h3>Cancel your account</h3>
+
+<div class="action-fields delete">
+  <p>This function will remove this account and all its projects from this site.</p>
+  <%= button_to "Delete this account", admin_destroy_user_path(@user), data: { confirm: "Are you sure you want to delete user "+@user.name }, method: :delete %>
+</div>

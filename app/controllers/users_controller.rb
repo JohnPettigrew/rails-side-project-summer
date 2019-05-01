@@ -12,11 +12,22 @@ class UsersController < ApplicationController
     @users = User.all.page(params[:page]).per_page(20)
   end
 
-  def destroy
+  def admin_destroy
     @user = User.find(params[:id])
     @user.destroy
-    if @user.destroy
-        redirect_to root_url, notice: "User deleted."
+    redirect_to users_path, notice: "User deleted." if @user.destroy
+  end
+
+  def admin_edit
+    @user = User.find(params[:id])
+  end
+
+  def admin_patch
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to users_path, notice: "User updated. " + @user.name + " ~~ " + @user.email
+    else
+      redirect_to users_path, alert: "Update failed. Please try again."
     end
   end
 
@@ -29,4 +40,11 @@ class UsersController < ApplicationController
     flash[:notice]="Successfully removed Twitter connection from your account."
     redirect_to user_path(current_user)
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
 end
