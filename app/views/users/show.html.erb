@@ -2,8 +2,7 @@
 
 <div class="profile-head">
   <%= render 'user_profile_image', user: @user %>
-  <div class="profile-name"><%= @user.name||="Private" %>
-    <% if current_user.admin %><span class="user-admin"><%= " (is an admin)" if @user.admin %></span><% end %>
+  <div class="profile-name"><%= @user.name||="Private" %><span class="user-admin"><%= " (is an admin)" if @user.admin && current_user.admin %></span>
   </div>
   <div class="profile-contact">
     <% if current_user.id==@user.id %>

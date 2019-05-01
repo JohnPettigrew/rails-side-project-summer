@@ -1,13 +1,13 @@
 <%= form_for (@project) do |f| %>
   <div><%= f.label :name, "Your project's name" %>
-  <%= f.text_field :name, :tabindex => 1, :required => true %></div>
+  <%= f.text_field :name, autofocus: true, :tabindex => 1, :required => true %></div>
 
   <div><%= f.label :description, "Briefly describe your project" %>
-  <%= f.text_area :description, :rows => 5, :tabindex => 2, :required => true, :maxlength => 1500 %></div>
+  <%= f.text_area :description, autofocus: true, :rows => 5, :tabindex => 2, :required => true, :maxlength => 1500 %></div>
 
   <div>
     <%= f.label :source, "Where will your source code be stored (e.g. GitHub or Bitbucket)?" %>
-    <%= f.url_field :source, class:'form-source', :tabindex => 3 %>
+    <%= f.url_field :source, autofocus: true, class:'form-source', :tabindex => 3 %>
     <p class="small">This field lets you include a complete URL to where you're storing the code you're writing. Or you can leave this field blank if you prefer, but sharing your code helps other people learn, too!</p>
   </div>
 

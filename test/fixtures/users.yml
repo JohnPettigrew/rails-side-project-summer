@@ -4,6 +4,13 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+admin:
+  email: admin@example.com
+  name: "Admin"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
+  admin: true
+
 one:
   email: one@example.com
   name: "One"
@@ -25,6 +32,6 @@ twitter:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
   twitter_key: "foo"
   twitter_secret: "foo"
+  twitter_user_url: "http://twitter.com/foo_path"
   uid: "foo"
-  provider: "foo"
-
+  provider: "twitter"
